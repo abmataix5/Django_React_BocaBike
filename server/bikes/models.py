@@ -3,8 +3,8 @@ from django.db import models
 # Create your models here.
 
 class Bike(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-
+    station = models.CharField(max_length=200,default='Ayuntamiento')
+    state = models.CharField(max_length=200)
+   
     def __str__(self):
-        return self.title
+        return self.station

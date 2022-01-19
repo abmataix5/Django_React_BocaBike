@@ -6,7 +6,7 @@ class BikeSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
             'id',
-            'title',
-            'description',
+            'station',
+            'available',
         )
         model = models.Bike
