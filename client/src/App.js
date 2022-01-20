@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Header from "./components/client/header"
+import {BikesContextProvider} from "./context/BikesContext"
 
 
 function App() {
@@ -18,12 +19,17 @@ function App() {
       <BrowserRouter>
 
       <Header/>
+
+        <BikesContextProvider>
+
+          <Routes>
+            <Route exact path='/home' element={<HomePage/>}/>
+            <Route exact path='/stations' element={<StationsPage/>}/> 
+            <Route exact path='/info' element={<InfoPage/>}/> 
+          </Routes>
+
+        </BikesContextProvider>
       
-      <Routes>
-        <Route exact path='/home' element={<HomePage/>}/>
-        <Route exact path='/stations' element={<StationsPage/>}/> 
-        <Route exact path='/info' element={<InfoPage/>}/> 
-      </Routes>
 
     </BrowserRouter>
      

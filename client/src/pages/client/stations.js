@@ -1,9 +1,13 @@
-import React, {useContext} from "react";
+import React from "react";
+import ListStations from "../../components/client/liststations";
+import { useBikes } from "../../hooks/useBikes";
 
 
 export default function Stations() {
 
+  const {bikes} = useBikes()
+
     return (
-    <div>Aqui iran las estaciones disponibles</div>
+      <ListStations bikes={bikes}/>
     );
   }
