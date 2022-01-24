@@ -5,6 +5,7 @@ import BikesContext from '../context/BikesContext'
 
 
 export function useBikes () {
+  
   const [loading, setLoading] = useState(false)
   const [loadingNextPage, setLoadingNextPage] = useState(false)
 
@@ -21,7 +22,7 @@ export function useBikes () {
         
       })
   }, [setBikes])
-
+/* 
   useEffect(function () {
 
     setLoadingNextPage(true)
@@ -31,7 +32,7 @@ export function useBikes () {
         setBikes(prevGifs => prevGifs.concat(nextGifs))
         setLoadingNextPage(false)
       })
-  }, [setBikes])
+  }, [setBikes]) */
 
   return { bikes,loading,loadingNextPage}
 }

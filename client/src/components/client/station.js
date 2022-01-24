@@ -1,7 +1,11 @@
 import React from 'react'
 
 
-export default function Station ({ id, station, state }) {
+export default function Station ({ stations}) {
+   
+  console.log(stations.stations);   
+
+
   return (
 
     <main>

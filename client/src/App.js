@@ -9,7 +9,7 @@ import {
 import './App.css';
 import Header from "./components/client/header"
 import {BikesContextProvider} from "./context/BikesContext"
-
+import {StationsContextProvider} from "./context/StationsContext"
 
 function App() {
   return (
@@ -19,7 +19,8 @@ function App() {
       <BrowserRouter>
 
       <Header/>
-
+      
+<        StationsContextProvider>
         <BikesContextProvider>
 
           <Routes>
@@ -29,7 +30,7 @@ function App() {
           </Routes>
 
         </BikesContextProvider>
-      
+        </StationsContextProvider>
 
     </BrowserRouter>
      

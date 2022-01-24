@@ -1,8 +1,9 @@
 import React from 'react'
 import Station from './station'
 
-export default function ListStations ({bikes}) {
- /*    return 
+export default function ListStations ({stations}) {
+/*   console.log(bikes); */
+  /*    return 
       {
         bikes.map(({id, station, state}) =>
           <Station
@@ -14,7 +15,7 @@ export default function ListStations ({bikes}) {
       }
  */
 
-      return(
-          <Station/>
-      )
+       return(
+          <Station stations = {stations}/>
+      ) 
   }

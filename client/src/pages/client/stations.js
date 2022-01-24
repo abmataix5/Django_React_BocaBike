@@ -1,13 +1,14 @@
 import React from "react";
 import ListStations from "../../components/client/liststations";
-import { useBikes } from "../../hooks/useBikes";
+/* import { useBikes } from "../../hooks/useBikes"; */
+import { useStations } from "../../hooks/useStations";
 
 
 export default function Stations() {
 
-  const {bikes} = useBikes()
+  const {stations} = useStations()
 
     return (
-      <ListStations bikes={bikes}/>
+      <ListStations stations={stations}/>
     );
   }

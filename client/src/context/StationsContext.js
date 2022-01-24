@@ -2,10 +2,10 @@ import React, {useState} from 'react'
 
 const Context = React.createContext({})
 
-export function GifsContextProvider ({children}) {
-  const [gifs, setGifs] = useState([])
+export function StationsContextProvider ({children}) {
+  const [stations, setStations] = useState([])
 
-  return <Context.Provider value={{gifs, setGifs}}>
+  return <Context.Provider value={{stations, setStations}}>
     {children}
   </Context.Provider>
 }
