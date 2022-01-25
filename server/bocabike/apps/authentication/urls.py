@@ -10,8 +10,8 @@
 #     url(r'^users/login/?$', LoginAPIView.as_view()),
 # ]
 
-from django.conf.urls import include, url
-from django.urls import reverse
+from django.conf.urls import include
+from django.urls import reverse,re_path
 from .views import (
     LoginAPIView, RegistrationAPIView, UserRetrieveUpdateAPIView, UserViewSet
 )
@@ -31,11 +31,11 @@ user_detail = UserViewSet.as_view({
 })
 
 urlpatterns = [
-    url(r'^user/?$', UserRetrieveUpdateAPIView.as_view()),
-    url(r'^users/?$', RegistrationAPIView.as_view()),
-    url(r'^users/login/?$', LoginAPIView.as_view()),
+    re_path(r'^user/?$', UserRetrieveUpdateAPIView.as_view()),
+    re_path(r'^users/?$', RegistrationAPIView.as_view()),
+    re_path(r'^users/login/?$', LoginAPIView.as_view()),
 
     #Admin
-    url(r'^userlist/$', user_list, name='user_list'),                                       
-    url(r'^userdetail/(?P<username>[0-9a-zA-Z_-]+)/$', user_detail, name='user_detail'), 
+    re_path(r'^userlist/$', user_list, name='user_list'),                                       
+    re_path(r'^userdetail/(?P<username>[0-9a-zA-Z_-]+)/$', user_detail, name='user_detail'), 
 ]

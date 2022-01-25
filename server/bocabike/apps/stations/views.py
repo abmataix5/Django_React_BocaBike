@@ -48,11 +48,14 @@ class StationsBikeAPIView(generics.ListAPIView):
 
     lookup_field = 'name'     
     lookup_url_kwarg = 'name'
+    
     queryset = Station.objects.all().prefetch_related('slots')
+    
     permission_classes = (AllowAny,)
     serializer_class = StationListDetailSerializer
 
 
     def filter_queryset(self, queryset):
         filters = {self.lookup_field: self.kwargs[self.lookup_url_kwarg]}
+      
         return queryset.filter(**filters)

@@ -1,4 +1,4 @@
-from conduit.apps.core.renderers import ConduitJSONRenderer
+from bocabike.apps.core.renderers import ConduitJSONRenderer
 
 
 class ProfileJSONRenderer(ConduitJSONRenderer):

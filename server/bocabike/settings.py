@@ -40,16 +40,32 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'corsheaders',
     'rest_framework',
+
     'bocabike.apps.bikes',
-    'bocabike.apps.stations'
+    'bocabike.apps.stations',
+    'bocabike.apps.core',
+    'bocabike.apps.profiles',
+    'bocabike.apps.authentication',
+
+
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ]
+    ],
+     'EXCEPTION_HANDLER': 'bocabike.apps.core.exceptions.core_exception_handler',
+    'NON_FIELD_ERRORS_KEY': 'error',
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'bocabike.apps.authentication.backends.JWTAuthentication',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 20,
+    
 }
 
 
@@ -147,3 +163,9 @@ CORS_ALLOWED_ORIGINS = (
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Tell Django about the custom `User` model we created. The string
+# `authentication.User` tells Django we are referring to the `User` model in
+# the `authentication` module. This module is registered above in a setting
+# called `INSTALLED_APPS`.
+AUTH_USER_MODEL = 'authentication.User'

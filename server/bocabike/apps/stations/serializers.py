@@ -37,7 +37,11 @@ class StationListDetailSerializer(serializers.ModelSerializer):
             'id',
             'name',
             'location',
+            'available_bikes',
+            'state',
+            'image_url',
+            'bikes',
             'slots',
        
         )
-        model = Slot 
+        model = Station 

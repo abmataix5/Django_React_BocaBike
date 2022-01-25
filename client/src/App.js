@@ -20,7 +20,7 @@ function App() {
 
       <Header/>
       
-<        StationsContextProvider>
+        <StationsContextProvider>
         <BikesContextProvider>
 
           <Routes>
