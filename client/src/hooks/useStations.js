@@ -7,7 +7,7 @@ import StationsContext from '../context/StationsContext'
 export function useStations () {
   
   const [loading, setLoading] = useState(false)
-  const [loadingNextPage, setLoadingNextPage] = useState(false)
+
 
   const {stations, setStations} = useContext(StationsContext)
 
@@ -17,13 +17,13 @@ export function useStations () {
 
     getStations()
       .then(stations => {
-        console.log(stations);
-        setStations(stations)
+        
+        setStations(stations.stations)
         setLoading(false)
         
       })
   }, [setStations])
 
 
-  return { stations,loading,loadingNextPage}
+  return { stations,loading}
 }

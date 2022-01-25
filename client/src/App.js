@@ -13,7 +13,7 @@ import {StationsContextProvider} from "./context/StationsContext"
 
 function App() {
   return (
-    <div className="App">
+    <div class="App">
 
   
       <BrowserRouter>
