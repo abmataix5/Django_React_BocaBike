@@ -1,6 +1,7 @@
 import HomePage from "./pages/client/home"
 import StationsPage from "./pages/client/stations"
 import InfoPage from "./pages/client/infobike"
+import Login from "./pages/client/login";
 import {
   BrowserRouter,
   Routes, // Just Use Routes instead of "Switch"
@@ -27,6 +28,7 @@ function App() {
             <Route exact path='/home' element={<HomePage/>}/>
             <Route exact path='/stations' element={<StationsPage/>}/> 
             <Route exact path='/info' element={<InfoPage/>}/> 
+            <Route exact path='/login' element={<Login/>}/> 
           </Routes>
 
         </BikesContextProvider>

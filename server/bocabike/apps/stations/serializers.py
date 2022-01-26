@@ -5,6 +5,8 @@ from .models import Station,Slot
 
 
 class StationSerializer(serializers.ModelSerializer):
+
+ 
     class Meta:
         fields = (
             'id',
@@ -14,6 +16,7 @@ class StationSerializer(serializers.ModelSerializer):
             'state',
             'image_url',
             'bikes'
+        
         )
         model = Station 
 

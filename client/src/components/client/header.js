@@ -24,7 +24,7 @@ export default function Header () {
           <Link to={'/info'} className="nav-link">Como funciona?</Link>
           </li>
           <li class="nav-item">
-          <Link to={'/stations'} className="nav-link">Login</Link>
+          <Link to={'/login'} className="nav-link">Login</Link>
           </li>
           <li class="nav-item">
           <Link to={'/info'} className="nav-link">Register</Link>
