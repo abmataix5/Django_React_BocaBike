@@ -47,8 +47,9 @@ export function useUser() {
 
 
 
-  const register = useCallback(
+  const register_f = useCallback(
     (email, password, username) => {
+      console.log(username)
       setState({ loading: true, error: false,loadingUser: false });
       registerService({ user: { email, password, username } })
         .then((data) => {
@@ -90,7 +91,7 @@ export function useUser() {
     jwt,
     user,
     state,
-    register
+    register_f
 
   };
 }
