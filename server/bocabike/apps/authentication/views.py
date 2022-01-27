@@ -46,14 +46,14 @@ class LoginAPIView(APIView):
 
     def post(self, request):
         user = request.data.get('user', {})
-
+        print(user)
         # Notice here that we do not call `serializer.save()` like we did for
         # the registration endpoint. This is because we don't actually have
         # anything to save. Instead, the `validate` method on our serializer
         # handles everything we need.
         serializer = self.serializer_class(data=user)
         serializer.is_valid(raise_exception=True)
-
+        print(serializer.data)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 

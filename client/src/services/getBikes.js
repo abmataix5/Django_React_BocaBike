@@ -1,4 +1,4 @@
-export default function getBikes() {
+export default async function getBikes() {
 
   const apiURL = `http://127.0.0.1:8080/api/bikes/`
 

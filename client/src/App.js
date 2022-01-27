@@ -11,16 +11,18 @@ import './App.css';
 import Header from "./components/client/header"
 import {BikesContextProvider} from "./context/BikesContext"
 import {StationsContextProvider} from "./context/StationsContext"
+import {UserContextProvider} from "./context/UserContext"
 
 function App() {
   return (
-    <div class="App">
+    <div className="App">
 
   
       <BrowserRouter>
 
       <Header/>
       
+        <UserContextProvider>
         <StationsContextProvider>
         <BikesContextProvider>
 
@@ -33,7 +35,7 @@ function App() {
 
         </BikesContextProvider>
         </StationsContextProvider>
-
+        </UserContextProvider>
     </BrowserRouter>
      
     </div>
