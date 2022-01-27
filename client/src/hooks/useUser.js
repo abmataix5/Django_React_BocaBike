@@ -1,6 +1,7 @@
 import { useCallback, useContext, useState } from "react"; //evita que se vuelva a ejecutar una funcion
 import UserContext from "../context/UserContext"
 import loginService from "../services/login_service";
+import registerService from "../services/register_service"
 
 import {saveToken,destroyToken,getToken} from '../services/jwt_service'
 
@@ -43,6 +44,36 @@ export function useUser() {
     [setJWT]
   ); //cada vez que cambie setJWT la funcion login se vuelve a crear
 
+
+
+
+  const register = useCallback(
+    (email, password, username) => {
+      setState({ loading: true, error: false,loadingUser: false });
+      registerService({ user: { email, password, username } })
+        .then((data) => {
+          console.log(data.user);
+          if (data.errors){
+            setState({loading:false,error:true, loadingUser: false})
+          
+            destroyToken()
+          }else{
+            setState({loading:false,error:false,loadingUser: false})
+            saveToken(data.user.token)
+          /*   setJWT(data.token); */
+            setUser(data.user)
+       /*      window.location.reload(); */
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          destroyToken()
+          setState({loading:false,error:true,loadingUser: false})
+        });
+    },
+    [setJWT]
+  ); 
+
   const check_auth = () => {
       console.log(user)
     if(user){
@@ -58,7 +89,8 @@ export function useUser() {
     login,
     jwt,
     user,
-    state
+    state,
+    register
 
   };
 }

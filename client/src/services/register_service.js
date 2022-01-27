@@ -1,15 +1,18 @@
-export default async function registerService(user) {
+  export default async function registerService(user) {
 
-    const apiURL = (`http://127.0.0.1:8080/api/users/`,user)
+    
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+    };
+
+    const apiURL = (`http://127.0.0.1:8080/api/users/`)
   
-    return fetch(apiURL)
-      .then((res) => {
-          
-        res.json()
-
-      }).catch(({ res }) => {
-        console.log(res.data);
-        return res.data
-      });
+    return fetch(apiURL,requestOptions)
+    .then(response => response.json())
+  
   
   }
+
+ 
