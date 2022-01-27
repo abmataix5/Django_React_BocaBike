@@ -15,7 +15,7 @@ const { register, handleSubmit, formState:{errors},} = useForm();
   useEffect(() => {
     console.log(isLogged);
     if (isLogged) {
-      history("/home");
+      history("/stations");
   
     }
   }, [isLogged]);

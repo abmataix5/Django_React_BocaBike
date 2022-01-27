@@ -9,6 +9,7 @@ import {saveToken,destroyToken,getToken} from '../services/jwt_service'
 
 
 export function useUser() {
+
   const { jwt, setJWT } = useContext(UserContext);
   const { user, setUser } = useContext(UserContext);
   const [ state, setState ] = useState({ loading: false, error: false, loadingUser: true});
@@ -29,9 +30,9 @@ export function useUser() {
             setState({loading:false,error:false, loadingUser: false})
             saveToken(data.user.token)
             setUser(data.user)
-           /*  setJWT(data.user.token); */
-   /*       
-            window.location.reload(); */
+           /*  setJWT(data.user.token);  */
+           
+            window.location.reload();  
           }
           
         })
@@ -61,9 +62,9 @@ export function useUser() {
           }else{
             setState({loading:false,error:false,loadingUser: false})
             saveToken(data.user.token)
-          /*   setJWT(data.token); */
+          /*   setJWT(data.token);  */
             setUser(data.user)
-       /*      window.location.reload(); */
+              window.location.reload();  
           }
         })
         .catch((err) => {
@@ -76,12 +77,17 @@ export function useUser() {
   ); 
 
   const check_auth = () => {
-      console.log(user)
-    if(user){
+    
+    if(localStorage.getItem('id_token')){
       return true
     }
     return false
   }
+
+  const logout = useCallback(() => {
+    destroyToken()
+   window.location.reload()
+  }, [setJWT]);
 
 
 
@@ -91,7 +97,9 @@ export function useUser() {
     jwt,
     user,
     state,
-    register_f
+    register_f,
+    logout,
+    setUser
 
   };
 }

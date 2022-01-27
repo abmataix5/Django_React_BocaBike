@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Station ({ station}) {
    
-console.log(station)
+
   return (
 
       <div className="col">
