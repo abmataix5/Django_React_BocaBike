@@ -47,7 +47,7 @@ export default function Header () {
             <div className="d-flex align-items-center">
 
               {
-                isLogged == true
+                isLogged === true
                 ?
                 <>
 

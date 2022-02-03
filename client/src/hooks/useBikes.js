@@ -22,17 +22,6 @@ export function useBikes () {
         
       })
   }, [setBikes])
-/* 
-  useEffect(function () {
-
-    setLoadingNextPage(true)
-
-    getBikes()
-      .then(nextGifs => {
-        setBikes(prevGifs => prevGifs.concat(nextGifs))
-        setLoadingNextPage(false)
-      })
-  }, [setBikes]) */
 
   return { bikes,loading,loadingNextPage}
 }

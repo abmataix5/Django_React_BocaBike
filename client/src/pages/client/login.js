@@ -2,17 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useNavigate} from "react-router-dom";
 import { useUser } from "../../hooks/useUser" 
 
+
 export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(""); 
 
   let history = useNavigate(); 
-  const { user, login, isLogged } = useUser(); 
+  const { login, isLogged } = useUser(); 
 
   useEffect(() => {
     console.log(isLogged);
     if (isLogged) {
+
       history("/stations");
   
     }
@@ -28,9 +30,10 @@ export default function Login() {
 
     return (
        
-    
+
      
       <form className="form-signin mt-5" onSubmit={handleSubmit}>
+     
         <img className="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"/>
         <h1 className="h3 mb-3 font-weight-normal">Inicia sesión en BocaBike</h1>
 

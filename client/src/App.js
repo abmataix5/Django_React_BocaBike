@@ -3,6 +3,7 @@ import StationsPage from "./pages/client/stations"
 import InfoPage from "./pages/client/infobike"
 import Login from "./pages/client/login";
 import Register from "./pages/client/register";
+import StationDetail from "./pages/client/OneStation";
 import {
   BrowserRouter,
   Routes, // Just Use Routes instead of "Switch"
@@ -15,6 +16,9 @@ import {StationsContextProvider} from "./context/StationsContext"
 import {UserContextProvider} from "./context/UserContext"
 
 function App() {
+
+
+
   return (
     <div className="App">
 
@@ -28,11 +32,13 @@ function App() {
         <BikesContextProvider>
 
           <Routes>
+            <Route exact path='/' element={<HomePage/>}/>
             <Route exact path='/home' element={<HomePage/>}/>
             <Route exact path='/stations' element={<StationsPage/>}/> 
             <Route exact path='/info' element={<InfoPage/>}/> 
             <Route exact path='/login' element={<Login/>}/> 
             <Route exact path='/register' element={<Register/>}/> 
+            <Route exact path='/stationDetail/:name' element={<StationDetail/>}/> 
           </Routes>
 
         </BikesContextProvider>

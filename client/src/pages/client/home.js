@@ -1,32 +1,24 @@
-import React, {useContext} from "react";
-
+import React from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 export default function Home() {
 
     return (
-      <div className="row m-lg-5">
-      <div className="col-lg-4">
-        <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-        <h2>Heading</h2>
-        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-        <p><a className="btn btn-secondary" href="#">View details &raquo;</a></p>
+      <Carousel className="mt-5" width={1830}>
+      <div>
+          <img src="./descarga.jpeg" />
+          <p className="legend">Legend 1</p>
       </div>
-      <div className="col-lg-4">
-        <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-        <h2>Heading</h2>
-        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-        <p><a className="btn btn-secondary" href="#">View details &raquo;</a></p>
+      <div>
+          <img src="assets/2.jpeg" />
+          <p className="legend">Legend 2</p>
       </div>
-      <div claclassNamess="col-lg-4">
-        <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-        <h2>Heading</h2>
-        <p>And lastly this, the third column of representative placeholder content.</p>
-        <p><a className="btn btn-secondary" href="#">View details &raquo;</a></p>
+      <div>
+          <img src="assets/3.jpeg" />
+          <p className="legend">Legend 3</p>
       </div>
-    </div>
+  </Carousel>
 
     );
   }

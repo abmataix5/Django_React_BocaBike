@@ -1,5 +1,6 @@
 import React from 'react'
 import Station from './station'
+import Loading from 'react-simple-loading';
 
 export default function ListStations ({stations}) {
 
@@ -9,7 +10,7 @@ export default function ListStations ({stations}) {
         
 
 
-        (stations.length === 0) ? "Cargando datos..." :    
+        (stations.length === 0) ? <Loading></Loading>:    
 
 
         <div>

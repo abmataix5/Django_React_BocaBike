@@ -6,7 +6,7 @@ from .models import Station,Slot
 
 class StationSerializer(serializers.ModelSerializer):
 
-  
+    slug= serializers.SlugField(required= False)
  
     class Meta:
         fields = (
@@ -16,7 +16,8 @@ class StationSerializer(serializers.ModelSerializer):
             'available_bikes',
             'state',
             'image_url',
-            'bikes'
+            'bikes',
+            'slug'
         
         )
         model = Station 

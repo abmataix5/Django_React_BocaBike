@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Station
 from .serializers import StationSerializer,SlotSerializer,StationListDetailSerializer
-
+from rest_framework.generics import RetrieveAPIView
 
 class ListStation(generics.ListAPIView):
     queryset = Station.objects.all()
@@ -41,6 +41,26 @@ class StationRetrieveAPIView(generics.RetrieveAPIView):
         print('*********** serializer.data ************')
         print(serializer.data)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+class ProfileRetrieveAPIView(RetrieveAPIView):
+    permission_classes = (AllowAny,)
+    queryset = Station.objects.select_related('station')
+    serializer_class = StationSerializer
+
+    def retrieve(self, request, username, *args, **kwargs):
+        # Try to retrieve the requested profile and throw an exception if the
+        # profile could not be found.
+        try:
+            profile = Station.queryset.get(id=request.data['id'])
+        except Station.DoesNotExist:
+            raise NotFound('A profile with this username does not exist.')
+
+        serializer = self.serializer_class(profile, context={
+            'request': request
+        })
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 
 class StationsBikeAPIView(generics.ListAPIView):

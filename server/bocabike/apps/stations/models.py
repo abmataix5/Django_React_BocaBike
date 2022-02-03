@@ -5,6 +5,7 @@ from django.db import models
 
 class Station(models.Model):
 
+    slug= models.SlugField(db_index=True, max_length=260,unique=True,default='')
     name = models.CharField(max_length=200,default='Ayuntamiento')
     location = models.CharField(max_length=200)
     available_bikes = models.CharField(max_length=200)

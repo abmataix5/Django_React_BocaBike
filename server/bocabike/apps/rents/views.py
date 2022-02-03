@@ -8,6 +8,7 @@ from rest_framework.exceptions import NotFound
 from rest_framework.permissions import (
     AllowAny, IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser
 )
+from  bocabike.apps.core.permissions import IsOwner
 
 class RentView(viewsets.GenericViewSet):
 
@@ -40,7 +41,7 @@ class RentView(viewsets.GenericViewSet):
 
 class RentsDestroyAPIView(generics.DestroyAPIView):
  
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsOwner,)
   
 
     def destroy(self, request, id=None):
