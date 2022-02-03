@@ -24,5 +24,6 @@ urlpatterns = [
     path('api/', include('bocabike.apps.bikes.urls')),
     path('api/', include('bocabike.apps.stations.urls')),
     path('api/', include('bocabike.apps.authentication.urls')),
+    path('api/', include('bocabike.apps.rents.urls')),
  
 ]

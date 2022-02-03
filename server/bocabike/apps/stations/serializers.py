@@ -6,6 +6,7 @@ from .models import Station,Slot
 
 class StationSerializer(serializers.ModelSerializer):
 
+  
  
     class Meta:
         fields = (

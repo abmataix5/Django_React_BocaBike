@@ -7,7 +7,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(""); 
 
-   let history = useNavigate(); 
+  let history = useNavigate(); 
   const { user, login, isLogged } = useUser(); 
 
   useEffect(() => {
@@ -21,8 +21,7 @@ export default function Login() {
   const handleSubmit = (e) => { 
  
     e.preventDefault();
-    console.log(email);
-    console.log(password);
+
     login(email, password);
 
    }; 

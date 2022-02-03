@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'bocabike.apps.core',
     'bocabike.apps.profiles',
     'bocabike.apps.authentication',
+    'bocabike.apps.rents'
 
 
 ]
@@ -71,7 +72,7 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-     'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -107,7 +108,7 @@ WSGI_APPLICATION = 'bocabike.wsgi.application'
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'bocabike',
+            'NAME': 'bocabike_reserva',
             'USER': 'root',
             'PASSWORD': 'ola123',
             'HOST': 'localhost',
