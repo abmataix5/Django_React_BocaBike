@@ -11,11 +11,11 @@ services:
     restart: always
     volumes:
       - test_drf_react_mysql:/docker-entrypoint-initdb.d/:ro
-      - test_drf_mysql_data:/var/lib/mysql
+      - test_drf_mysql_data:/var/lib/mysql/
     networks:
-      - react_django_mysql
+      - test_drf_react
 
-  server:
+  backend:
     build: ./server/
     container_name: djangoContainer
     command: sh -c "./wait-for-it.sh db:3306; python manage.py makemigrations;python manage.py migrate;python manage.py runserver 0.0.0.0:8080"
@@ -29,9 +29,9 @@ services:
     depends_on:
       - db
     networks:
-      - react_django_mysql
+      - test_drf_react
 
-  client:
+  frontend:
     build: ./client/
     container_name: reactContainer
     command: bash -c "npm install && npm start"
@@ -41,12 +41,12 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - server
+      - backend
     networks:
-      - react_django_mysql
+      - test_drf_react
 
 networks:
-  react_django_mysql:
+  test_drf_react:
 volumes:
   test_drf_react_mysql:
   test_drf_mysql_data:
