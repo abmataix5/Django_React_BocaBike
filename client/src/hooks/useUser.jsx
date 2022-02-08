@@ -2,7 +2,7 @@ import { useCallback, useContext, useState } from "react"; //evita que se vuelva
 import UserContext from "../context/UserContext"
 import LoginService from "../services/login_service";
 import registerService from "../services/register_service"
-
+import UserService from "../services/getUser";
 import {saveToken,destroyToken,getToken} from '../services/jwt_service'
 
 
@@ -21,13 +21,14 @@ export function useUser() {
       setState({ loading: true, error: false, loadingUser: true });
       LoginService.login({ user: { email, password } })
         .then((data) => {
-         
+ 
+          
             setState({loading:false,error:false, loadingUser: false})
             saveToken(data.data.user.token)
-            setUser(data.data.user)
+            setUser(UserService.getUserData()) 
   
            
-            window.location.reload();  
+             window.location.reload();   
           
           
         })

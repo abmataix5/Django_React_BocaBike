@@ -22,7 +22,7 @@ class Station(models.Model):
 class Slot(models.Model):
 
     station = models.ForeignKey('stations.Station',related_name='slots',on_delete=models.CASCADE)
-    id_bike = models.OneToOneField('bikes.Bike' , related_name='slots' , on_delete=models.DO_NOTHING,blank=True)
+    id_bike = models.OneToOneField('bikes.Bike' , related_name='slots' , on_delete=models.DO_NOTHING,blank=True,default='1')
     slot_state = models.CharField(max_length=200,default='Ocupado')
 
 

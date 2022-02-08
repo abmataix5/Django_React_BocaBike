@@ -6,12 +6,11 @@ export default () => {
   })
 
 /* Enviamos token */
-  const admin = localStorage.getItem('admin')
-  const token = localStorage.getItem('token')
+
+  const token = localStorage.getItem('id_token')
   if (token ) {
-    axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`
-    axiosInstance.defaults.headers.common['Admin'] = `Admin ${admin}`
-    console.log(token);
+    
+    axiosInstance.defaults.headers.common['Authorization'] = `token ${token}`
  
   } 
 
@@ -20,8 +19,7 @@ export default () => {
     (response) => response,
     (error) => {
       if (error.response.status === 401) {
-      /*   localStorage.removeItem('token')
-        localStorage.removeItem('admin') */
+     
         window.alert("NO TIENES PERMISOS")
       }
       return Promise.reject(error) 

@@ -123,7 +123,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'email', 'username', 'password', 'token', 'profile', 'bio', 
-            'image',
+            'image','is_staff'
         )
         
 
