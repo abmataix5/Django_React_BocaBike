@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-=4072*z)5(kn2wk$k6&d&hofvm0^^5o+!m-8#l$cmz9krpovaa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['0.0.0.0','localhost','127.0.0.1','*']
 
 
 # Application definition
@@ -111,7 +111,7 @@ DATABASES = {
             'NAME': 'bocabike_reserva',
             'USER': 'root',
             'PASSWORD': 'ola123',
-            'HOST': 'localhost',
+            'HOST': 'db',
             'PORT': '3306',
         }
     }

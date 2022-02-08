@@ -1,0 +1,52 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: mysqlContainer
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "30000:3306"
+    env_file: .env
+    restart: always
+    volumes:
+      - test_drf_react_mysql:/docker-entrypoint-initdb.d/:ro
+      - test_drf_mysql_data:/var/lib/mysql
+    networks:
+      - react_django_mysql
+
+  server:
+    build: ./server/
+    container_name: djangoContainer
+    command: sh -c "./wait-for-it.sh db:3306; python manage.py makemigrations;python manage.py migrate;python manage.py runserver 0.0.0.0:8080"
+    restart: always
+    working_dir: /app/backend/
+    env_file: .env
+    volumes:
+      - ./server/:/app/backend/
+    ports:
+      - "8005:8080"
+    depends_on:
+      - db
+    networks:
+      - react_django_mysql
+
+  client:
+    build: ./client/
+    container_name: reactContainer
+    command: bash -c "npm install && npm start"
+    working_dir: /app/frontend/
+    volumes:
+      - ./client/:/app/frontend/
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+    networks:
+      - react_django_mysql
+
+networks:
+  react_django_mysql:
+volumes:
+  test_drf_react_mysql:
+  test_drf_mysql_data:
