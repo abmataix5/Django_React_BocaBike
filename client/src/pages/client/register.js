@@ -9,6 +9,7 @@ export default function Register() {
 const { register, handleSubmit, formState:{errors},} = useForm();
 
   let history = useNavigate(); 
+  
   const { register_f,isLogged } = useUser(); 
 
 

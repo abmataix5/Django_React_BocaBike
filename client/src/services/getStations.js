@@ -1,8 +1,19 @@
-export default async function getStations() {
 
-  const apiURL = `http://127.0.0.1:8080/api/stations/`
+  
+import ApiService from './ApiService'
 
-  return fetch(apiURL)
-    .then((res) => res.json())
+const StationsService = {
+
+    getAllStations() {
+    
+        return ApiService().get(`stations/`);
+    },
+
+    getOneStation(name) { 
+        return ApiService().get(`stations/${name.name}/`);
+    },
+
+    
 
 }
+export default StationsService;

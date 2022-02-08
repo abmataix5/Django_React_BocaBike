@@ -1,4 +1,4 @@
-  export default async function registerService(user) {
+/*   export default async function registerService(user) {
 
     
     const requestOptions = {
@@ -13,6 +13,23 @@
     .then(response => response.json())
   
   
-  }
+  } */
+
+    
+import ApiService from './ApiService'
+
+
+const RegisterService = {
+
+  register(user) {
+
+      return ApiService().post(`users/`,user);
+  },
+
+  
+
+}
+export default RegisterService;
+
 
  

@@ -27,8 +27,10 @@ class StationSerializer(serializers.ModelSerializer):
 class SlotSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
+            'id',
             'station',
             'id_bike',
+            'slot_state'
        
         )
         model = Slot 

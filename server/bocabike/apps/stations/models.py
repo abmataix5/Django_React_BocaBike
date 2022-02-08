@@ -5,7 +5,7 @@ from django.db import models
 
 class Station(models.Model):
 
-    slug= models.SlugField(db_index=True, max_length=260,unique=True,default='')
+ 
     name = models.CharField(max_length=200,default='Ayuntamiento')
     location = models.CharField(max_length=200)
     available_bikes = models.CharField(max_length=200)
@@ -22,8 +22,9 @@ class Station(models.Model):
 class Slot(models.Model):
 
     station = models.ForeignKey('stations.Station',related_name='slots',on_delete=models.CASCADE)
-    id_bike = models.OneToOneField('bikes.Bike' , related_name='bikes' , on_delete=models.SET_NULL,null=True)
+    id_bike = models.OneToOneField('bikes.Bike' , related_name='slots' , on_delete=models.DO_NOTHING,blank=True)
+    slot_state = models.CharField(max_length=200,default='Ocupado')
 
 
     def __str__(self):
-        return self.station
+        return str(self.id)

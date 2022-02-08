@@ -32,7 +32,7 @@ export default function Header () {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             
             <li className="nav-item">
-                <Link to={'/home'} className="nav-link px-3 me-2 text-white">Home</Link>
+                <Link to={'/'} className="nav-link px-3 me-2 text-white">Home</Link>
                 </li>
                 <li className="nav-item">
                 <Link to={'/stations'} className="nav-link px-3 me-2 text-white">Estaciones</Link>

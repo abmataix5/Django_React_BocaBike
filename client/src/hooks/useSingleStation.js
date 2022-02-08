@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import { useStations } from "../hooks/useStations";
-import getSingleStation from '../services/getSingleStation'
+import StationsService from '../services/getStations'
 
 export  function useSingleStation ({ name }) {
   
@@ -15,10 +15,10 @@ export  function useSingleStation ({ name }) {
   useEffect(function () {
     if (!station) {
       setIsLoading(true)
-      getSingleStation({ name })
+      StationsService.getOneStation({ name })
         .then(station => {
 
-          setStation(station.results[0])
+          setStation(station.data.results)
           setIsLoading(false)
           setIsError(false)
         }).catch(err => {

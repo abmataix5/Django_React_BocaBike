@@ -4,13 +4,13 @@ import Loading from 'react-simple-loading';
 
 export default function ListStations ({stations}) {
 
-
+console.log(stations);
 
        return(
         
 
 
-        (stations.length === 0) ? <Loading></Loading>:    
+        (stations.length === 0) ? <Loading/>:    
 
 
         <div>

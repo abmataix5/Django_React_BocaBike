@@ -13,7 +13,7 @@ class ListStation(generics.ListAPIView):
     queryset = Station.objects.all()
     pagination_class = None
     permission_classes = (AllowAny,)
-    serializer_class = StationSerializer
+    serializer_class = StationListDetailSerializer
 
     def list(self, request):
         serializer_data = self.get_queryset()

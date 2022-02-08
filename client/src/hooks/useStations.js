@@ -1,5 +1,5 @@
 import {useContext, useEffect, useState} from 'react'
-import getStations from '../services/getStations'
+import StationsService from '../services/getStations'
 import StationsContext from '../context/StationsContext'
 
 
@@ -15,10 +15,10 @@ export function useStations () {
   useEffect(function () {
     setLoading(true)
 
-    getStations()
+    StationsService.getAllStations()
       .then(stations => {
-        
-        setStations(stations.stations)
+
+        setStations(stations.data.stations)
         setLoading(false)
         
       })
