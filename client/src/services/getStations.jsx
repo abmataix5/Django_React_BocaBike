@@ -13,6 +13,11 @@ const StationsService = {
         return ApiService().get(`stations/${name.name}/`);
     },
 
+    rentBike(rent_info) { 
+ console.log(rent_info)
+        return ApiService().post(`rent/`,rent_info);
+    },
+
     
 
 }

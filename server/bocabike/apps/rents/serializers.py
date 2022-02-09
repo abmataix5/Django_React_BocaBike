@@ -1,9 +1,12 @@
+from pickle import TRUE
 from rest_framework import serializers
 from django.db import models
-
+from bocabike.apps.profiles.serializers import ProfileSerializer
 from .models import Rent
-
+from bocabike.apps.bikes.serializers import BikeSerializer
 class RentSerializer(serializers.ModelSerializer):
+
+ 
     class Meta:
         fields = (
             'user',

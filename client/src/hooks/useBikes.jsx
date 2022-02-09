@@ -1,6 +1,7 @@
 import {useContext, useEffect, useState} from 'react'
 import getBikes from '../services/getBikes'
 import BikesContext from '../context/BikesContext'
+import BikesService from '../services/getBikes'
 
 
 
@@ -15,9 +16,10 @@ export function useBikes () {
   useEffect(function () {
     setLoading(true)
 
-    getBikes()
+    BikesService.getAllBikes()
       .then(bikes => {
-        setBikes(bikes)
+   
+        setBikes(bikes.data.bikes)
         setLoading(false)
         
       })

@@ -8,7 +8,8 @@ import { destroyToken } from './jwt_service';
       
         ApiService().get('user/')
         .then(({ data }) => {
-            console.log(data.user)
+          console.log(data.user)
+          localStorage.setItem('id_user_active',data.user.id)
           return data.user
         })
         .catch(({ response }) => {

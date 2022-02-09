@@ -13,18 +13,17 @@ from  bocabike.apps.core.permissions import IsOwner
 class RentView(viewsets.GenericViewSet):
 
     serializer_class = RentSerializer
+    permission_classes = (IsAuthenticated,)
 
     def create(self, request):
-        
+        print(request.user.id) 
         serializer_context = {
-            'user': request.data['user'],
+            'user': request.user.id,
             'bike': request.data['bike'],
             'station': request.data['station'],
-            'day':request.data['day'],
-            'hour':request.data['hour'],
             'request': request
         }
-      
+        print(request.data)
         serializer_data = request.data
      
         serializer = self.serializer_class(

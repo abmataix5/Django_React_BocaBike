@@ -25,10 +25,10 @@ export function useUser() {
           
             setState({loading:false,error:false, loadingUser: false})
             saveToken(data.data.user.token)
+            setJWT(data.data.user.token);
             setUser(UserService.getUserData()) 
-  
-           
-             window.location.reload();   
+        
+            window.location.reload();    
           
           
         })

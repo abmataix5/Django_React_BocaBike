@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useSingleStation } from "../../hooks/useSingleStation" 
 import Loading from 'react-simple-loading';
 import { Link} from "react-router-dom";
+import { useUser } from "../../hooks/useUser";
 
 export default function StationDetail() {
 
@@ -11,7 +12,10 @@ export default function StationDetail() {
 
   const {station} = useSingleStation({name:name})
 
-  console.log(station)
+  const {  isLogged } = useUser(); 
+  
+  console.log(isLogged);
+
     return (
 
         station === undefined ? <Loading></Loading> :
@@ -41,11 +45,11 @@ export default function StationDetail() {
                                 <div className="table-responsive mt-5">
                                 
 
-                                        {station.slots.length === 0 
+                                        {station.slots.length === 0 || isLogged === false
                                             
                                             ? 
+                                            <div>Inicia sesión para poder reservar nuestras bicis<Loading></Loading> </div>
                                             
-                                            <Loading></Loading> 
                                             
                                             :
 

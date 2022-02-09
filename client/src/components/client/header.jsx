@@ -40,6 +40,9 @@ export default function Header () {
                 <li className="nav-item ">
                 <Link to={'/info'} className="nav-link px-3 me-2 text-white">Como funciona?</Link>
                 </li>
+                <li className="nav-item ">
+                <Link to={'/dashboard'} className="nav-link px-3 me-2 text-white">Dashboard</Link>
+                </li>
           
             </ul>
       
