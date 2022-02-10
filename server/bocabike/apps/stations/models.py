@@ -12,6 +12,7 @@ class Station(models.Model):
     state = models.CharField(max_length=200,default='Disponible')
     image_url = models.CharField(max_length=200,default='./descarga.jpeg')
     bikes = models.CharField(max_length=200,default='Disponible')
+    state_station = models.CharField(max_length=200,default='Disponible')
  
    
     def __str__(self):

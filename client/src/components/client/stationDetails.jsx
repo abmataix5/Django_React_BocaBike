@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRents } from '../../hooks/useRent';
 
+
 export default function StationInfoDetails ({ slot}) {
 
   const { rent,rentBikeID,rent_remove } = useRents(); 

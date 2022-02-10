@@ -111,3 +111,35 @@ class SlotRentUpdateAPIView(generics.UpdateAPIView):
         serializer.save()
 
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
+class StationUpdateStateAPIView(generics.UpdateAPIView):
+
+
+    permission_classes = (IsAuthenticated,)
+    serializer_class = StationSerializer
+
+
+    def update(self,request,idStation):
+        print(idStation)
+        print(request.data)
+        serializer_context = {'request': request}
+
+        try:
+            serializer_instance = Station.objects.get(id=idStation)
+        except Slot.DoesNotExist:
+            raise NotFound('No existe una estación con ese ID')
+            
+        serializer_data = request.data.get('station', {})
+        print(serializer_data)
+        serializer = self.serializer_class(
+            serializer_instance, 
+            context=serializer_context,
+            data=serializer_data, 
+            partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response(serializer.data, status=status.HTTP_200_OK)

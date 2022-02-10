@@ -11,7 +11,7 @@ export function useRents () {
   const [loading, setLoading] = useState(false)
   const [loadingNextPage, setLoadingNextPage] = useState(false)
   const [rentBikeID, setRentBikeID] = useState(false)
- 
+ const [rentActive,SetRentActive] = useState(false)
 
 
  
@@ -24,7 +24,9 @@ export function useRents () {
             .then((data) => {
 
                 localStorage.setItem('bike_rentID',data.data.bike.id) /* Guardamos bici alquilada activa */
-              
+              SetRentActive(true)
+              console.log(rentActive)
+              window.location.reload()
             })
             .catch((err) => {
           console.log(err)
@@ -54,7 +56,8 @@ export function useRents () {
         StationsService.updateSlotRent({slot:{"slot_state": "OCUPADO","id_bike": bike}} ,id_slot)
         .then((data) => {
           localStorage.removeItem('bike_rentID')
-          window.alert('Alquiler finalizado!')
+          SetRentActive(false)
+          window.location.reload()
           console.log(data)
         })
         .catch((err) => {
@@ -65,5 +68,5 @@ export function useRents () {
   ); 
 
 
-  return { rent,rent_remove,loading,loadingNextPage,rentBikeID}
+  return { rent,rent_remove,loading,loadingNextPage,rentBikeID,rentActive,SetRentActive}
 }

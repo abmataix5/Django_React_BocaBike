@@ -1,10 +1,10 @@
 import {useState, useEffect} from 'react'
 import { useStations } from "../hooks/useStations";
 import StationsService from '../services/getStations'
-
+import { useRents } from './useRent';
 export  function useSingleStation ({ name }) {
   
-  
+  const{rentActive} = useRents()
   const {stations} = useStations()
   const gifFromCache = stations.find(singleGif => singleGif.name === name)
 
@@ -18,7 +18,7 @@ export  function useSingleStation ({ name }) {
       StationsService.getOneStation({ name })
         .then(station => {
 
-          setStation(station.data.results)
+          setStation(station.data.results[0])
           setIsLoading(false)
           setIsError(false)
         }).catch(err => {
@@ -26,7 +26,7 @@ export  function useSingleStation ({ name }) {
           setIsError(true)
         })
     }
-  }, [station, name,localStorage])
+  }, [station, name,rentActive])
 
   return {station, isLoading, isError}
 }
