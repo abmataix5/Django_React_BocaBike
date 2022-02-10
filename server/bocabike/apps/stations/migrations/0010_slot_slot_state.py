@@ -10,9 +10,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='slot',
-            name='slot_state',
-            field=models.CharField(default='Ocupado', max_length=200),
-        ),
+     
     ]

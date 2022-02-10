@@ -1,5 +1,7 @@
 from django.template import context
 from django.contrib import messages
+
+from bocabike.apps.profiles.models import Profile
 from .serializers import RentSerializer
 from rest_framework import generics, mixins, status, viewsets
 from rest_framework.response import Response 
@@ -10,27 +12,28 @@ from rest_framework.permissions import (
 )
 from  bocabike.apps.core.permissions import IsOwner
 
-class RentView(viewsets.GenericViewSet):
+class RentView(generics.ListCreateAPIView):
 
     serializer_class = RentSerializer
     permission_classes = (IsAuthenticated,)
 
     def create(self, request):
-        print(request.user.id) 
+    
+    
         serializer_context = {
-            'user': request.user.id,
-            'bike': request.data['bike'],
-            'station': request.data['station'],
+            'user': request.user.profile.id,
+            'bike' :request.data['bike'],
+            'station' : request.data['station'],
             'request': request
         }
-        print(request.data)
-        serializer_data = request.data
+
+        serializer_data = request.data.get('rent',{})
      
         serializer = self.serializer_class(
             data = serializer_data,
             context = serializer_context
         )
-
+        
    
         serializer.is_valid(raise_exception=True)
         serializer.save()

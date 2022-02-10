@@ -4,32 +4,53 @@ from django.db import models
 from bocabike.apps.profiles.serializers import ProfileSerializer
 from .models import Rent
 from bocabike.apps.bikes.serializers import BikeSerializer
+from bocabike.apps.stations.serializers import StationSerializer
+from bocabike.apps.profiles.models import Profile
+from bocabike.apps.bikes.models import Bike
+from bocabike.apps.stations.models import Station
+from rest_framework.exceptions import NotFound
+
 class RentSerializer(serializers.ModelSerializer):
 
+    user = ProfileSerializer(read_only = True)
+    bike = BikeSerializer(read_only = True)
+    station = StationSerializer(read_only = True)
  
     class Meta:
         fields = (
             'user',
             'bike',
-            'station',
-            'day',
-            'hour'
+            'station'
+       
         )
         model = Rent
        
 
-"""     def create(self, validate_data):
+    def create(self, validated_data):
+  
+
+        try:
+            id_user = self.context['user']
+            user = Profile.objects.get(id= id_user)
         
-        user = self.context['user']
-        bike = self.context['bike']
-        station = self.context['station']
+        except Profile.DoesNotExist:
+             raise NotFound('No existe usuario con ese id')
 
-        rent = Rent.objects.create(
-            user = user,
-            bike = bike,
-            station = station,
-            
-            **validate_data
-        )
+        try:
+            id_bike = self.context['bike']
+            bike = Bike.objects.get(id= id_bike)
+        except Bike.DoesNotExist:
+             raise NotFound('No existe bici con ese id')
 
-        return rent   """
+        try:
+            id_station = self.context['station']
+            station = Station.objects.get(id= id_station)
+        
+        except Station.DoesNotExist:
+             raise NotFound('No existe usuario con ese id')
+             
+
+
+        rent = Rent.objects.create(user=user, bike=bike,  station=station)
+
+        return rent

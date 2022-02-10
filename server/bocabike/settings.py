@@ -108,7 +108,7 @@ WSGI_APPLICATION = 'bocabike.wsgi.application'
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'bocabike_reserva',
+            'NAME': 'test',
             'USER': 'root',
             'PASSWORD': 'ola123',
             'HOST': 'localhost',

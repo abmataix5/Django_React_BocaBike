@@ -17,7 +17,7 @@ router = DefaultRouter()
 urlpatterns = [
     re_path(r'^', include(router.urls)),
     
-    re_path(r'^rent/?$', RentView.as_view({'post': 'create'})),
+    re_path(r'^rent/?$', RentView.as_view()),
     re_path(r'^rent/delete/?$', RentsDestroyAPIView.as_view())
 
 ]
