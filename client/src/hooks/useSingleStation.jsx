@@ -26,7 +26,7 @@ export  function useSingleStation ({ name }) {
           setIsError(true)
         })
     }
-  }, [station, name])
+  }, [station, name,localStorage])
 
   return {station, isLoading, isError}
 }

@@ -15,43 +15,55 @@ export function useRents () {
 
 
  
-  const rent = useCallback(
-    ( bike,station,user) => {
-    console.log(bike,station)
-    user = localStorage.getItem('id_user_active')
-    StationsService.rentBike({ user,bike, station  })
+  const rent = useCallback(( bike,station,id_slot) => {
+   
+
+      /* Insert en tabla alquileres de bicis, para posteriores estadísticas */
+
+        StationsService.rentBike({bike, station  })
+            .then((data) => {
+
+                localStorage.setItem('bike_rentID',data.data.bike.id) /* Guardamos bici alquilada activa */
+              
+            })
+            .catch((err) => {
+          console.log(err)
+            });
+
+
+      /* Update de slot */
+
+        StationsService.updateSlotRent({slot:{"slot_state": "LIBRE","id_bike": ""}} ,id_slot)
         .then((data) => {
- 
-              console.log(data.data.bike)
-             localStorage.setItem('bike_rentID',data.data.bike)
-          
+
+          console.log(data)
         })
         .catch((err) => {
-       console.log(err)
+      console.log(err)
+        });
+        
+    },
+    []
+  ); 
+
+
+  const rent_remove = useCallback(( id_slot ) => {
+    
+      const bike = localStorage.getItem('bike_rentID')
+  
+        StationsService.updateSlotRent({slot:{"slot_state": "OCUPADO","id_bike": bike}} ,id_slot)
+        .then((data) => {
+          localStorage.removeItem('bike_rentID')
+          window.alert('Alquiler finalizado!')
+          console.log(data)
+        })
+        .catch((err) => {
+      console.log(err)
         });
     },
     []
   ); 
 
 
-  const rent_remove = useCallback(
-    ( bike,station,user) => {
-    console.log(bike,station)
-    user = localStorage.getItem('id_user_active')
-    StationsService.rentBike({ user,bike, station  })
-        .then((data) => {
- 
-              console.log(data.data.bike)
-             localStorage.setItem('bike_rentID',data.data.bike)
-          
-        })
-        .catch((err) => {
-       console.log(err)
-        });
-    },
-    []
-  ); 
-
-
-  return { rent,loading,loadingNextPage,rentBikeID}
+  return { rent,rent_remove,loading,loadingNextPage,rentBikeID}
 }

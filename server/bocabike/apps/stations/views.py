@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 from .models import Station
 from .serializers import StationSerializer,SlotSerializer,StationListDetailSerializer
 from rest_framework.generics import RetrieveAPIView
-
+from .models import Slot
 class ListStation(generics.ListAPIView):
     queryset = Station.objects.all()
     pagination_class = None
@@ -79,3 +79,35 @@ class StationsBikeAPIView(generics.ListAPIView):
         filters = {self.lookup_field: self.kwargs[self.lookup_url_kwarg]}
   
         return queryset.filter(**filters)
+
+
+
+class SlotRentUpdateAPIView(generics.UpdateAPIView):
+
+
+    permission_classes = (IsAuthenticated,)
+    serializer_class = SlotSerializer
+
+
+    def update(self,request,idSlot):
+        print(idSlot)
+        print(request.data)
+        serializer_context = {'request': request}
+
+        try:
+            serializer_instance = Slot.objects.get(id=idSlot)
+        except Slot.DoesNotExist:
+            raise NotFound('No existe un slot con ese ID')
+            
+        serializer_data = request.data.get('slot', {})
+        print(serializer_data)
+        serializer = self.serializer_class(
+            serializer_instance, 
+            context=serializer_context,
+            data=serializer_data, 
+            partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response(serializer.data, status=status.HTTP_200_OK)

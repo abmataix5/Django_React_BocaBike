@@ -1,7 +1,5 @@
 from django.template import context
 from django.contrib import messages
-
-from bocabike.apps.profiles.models import Profile
 from .serializers import RentSerializer
 from rest_framework import generics, mixins, status, viewsets
 from rest_framework.response import Response 

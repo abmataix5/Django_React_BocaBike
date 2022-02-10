@@ -14,7 +14,7 @@ export default function StationDetail() {
 
   const {  isLogged } = useUser(); 
   
-  console.log(isLogged);
+
 
     return (
 

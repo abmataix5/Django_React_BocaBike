@@ -14,9 +14,14 @@ const StationsService = {
     },
 
     rentBike(rent_info) { 
- console.log(rent_info)
         return ApiService().post(`rent/`,rent_info);
     },
+
+    updateSlotRent(slot,id_slot) { 
+        console.log(id_slot)
+        return ApiService().put(`stations/slotUpdate/${id_slot}/`,slot);
+    },
+
 
     
 

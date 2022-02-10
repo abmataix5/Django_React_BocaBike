@@ -7,8 +7,7 @@ export default function ListStations ({stations}) {
 
   const {  isLogged } = useUser(); 
   
-  console.log(stations);
-  
+
        return(
         
 
