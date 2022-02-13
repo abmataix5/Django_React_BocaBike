@@ -9,11 +9,9 @@ services:
       - "30000:3306"
     env_file: .env
     restart: always
-    volumes:
-      - test_drf_react_mysql:/docker-entrypoint-initdb.d/:ro
-      - test_drf_mysql_data:/var/lib/mysql/
+
     networks:
-      - test_drf_react
+      - drf_react
 
   backend:
     build: ./server/
@@ -29,7 +27,7 @@ services:
     depends_on:
       - db
     networks:
-      - test_drf_react
+      - drf_react
 
   frontend:
     build: ./client/
@@ -43,10 +41,7 @@ services:
     depends_on:
       - backend
     networks:
-      - test_drf_react
+      - drf_react
 
 networks:
-  test_drf_react:
-volumes:
-  test_drf_react_mysql:
-  test_drf_mysql_data:
+  drf_react:

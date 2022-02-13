@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 import pymysql
 pymysql.install_as_MySQLdb()
 
@@ -108,9 +108,9 @@ WSGI_APPLICATION = 'bocabike.wsgi.application'
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'bocabike_reserva',
-            'USER': 'root',
-            'PASSWORD': 'ola123',
+            'NAME': os.environ['MYSQL_DATABASE'],
+            'USER': os.environ['MYSQL_USER_DJANGO'],
+            'PASSWORD': os.environ['MYSQL_ROOT_PASSWORD'],
             'HOST': 'db',
             'PORT': '3306',
         }
