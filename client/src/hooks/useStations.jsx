@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from 'react'
+import {useContext, useEffect, useState,useCallback} from 'react'
 import StationsService from '../services/getStations'
 import StationsContext from '../context/StationsContext'
 
@@ -25,5 +25,23 @@ export function useStations () {
   }, [setStations])
 
 
-  return { stations,loading}
+
+  const disableStation = useCallback(
+    (id_station, state_station) => {
+
+      StationsService.disableStation({station:{"state_station": state_station}},id_station)
+        .then((data) => {
+ 
+            console.log(data)
+            window.location.reload()
+          
+        })
+        .catch((err) => {
+    
+        });
+    },
+    []
+  );
+
+  return { stations,loading,disableStation}
 }

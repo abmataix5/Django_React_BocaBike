@@ -21,6 +21,10 @@ const StationsService = {
         console.log(id_slot)
         return ApiService().put(`stations/slotUpdate/${id_slot}/`,slot);
     },
+    disableStation(state_station,id_station) { 
+  
+        return ApiService().put(`stations/stationUpdate/${id_station}/`,state_station);
+    },
 
 
     

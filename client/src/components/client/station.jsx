@@ -4,7 +4,7 @@ import Loading from 'react-simple-loading';
 
 export default function Station ({ station}) {
    
-console.log(station.state_station)
+
   return (
 
     

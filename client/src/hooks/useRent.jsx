@@ -1,4 +1,5 @@
 import UserContext from "../context/UserContext"
+import  RentsContextProvider  from "../context/RentsContext";
 import {useContext, useCallback, useState} from 'react'
 import getBikes from '../services/getBikes'
 
@@ -6,12 +7,13 @@ import StationsService from "../services/getStations";
 
 
 export function useRents () {
-  
-  const { user } = useContext(UserContext);
+
+  const{rentActive,setRentActive} = useContext(RentsContextProvider)
+  const { user } = useContext(UserContext)
   const [loading, setLoading] = useState(false)
   const [loadingNextPage, setLoadingNextPage] = useState(false)
   const [rentBikeID, setRentBikeID] = useState(false)
- const [rentActive,SetRentActive] = useState(false)
+
 
 
  
@@ -24,12 +26,13 @@ export function useRents () {
             .then((data) => {
 
                 localStorage.setItem('bike_rentID',data.data.bike.id) /* Guardamos bici alquilada activa */
-              SetRentActive(true)
-              console.log(rentActive)
-              window.location.reload()
+                setRentActive(data.data.bike.id)
+                console.log(rentActive)
+                window.location.reload()  
+
             })
             .catch((err) => {
-          console.log(err)
+                console.log(err)
             });
 
 
@@ -37,11 +40,11 @@ export function useRents () {
 
         StationsService.updateSlotRent({slot:{"slot_state": "LIBRE","id_bike": ""}} ,id_slot)
         .then((data) => {
-
+          setRentActive(data)
           console.log(data)
         })
         .catch((err) => {
-      console.log(err)
+         console.log(err)
         });
         
     },
@@ -55,18 +58,19 @@ export function useRents () {
   
         StationsService.updateSlotRent({slot:{"slot_state": "OCUPADO","id_bike": bike}} ,id_slot)
         .then((data) => {
+
           localStorage.removeItem('bike_rentID')
-          SetRentActive(false)
+          setRentActive(false)
           window.location.reload()
-          console.log(data)
+       
         })
         .catch((err) => {
-      console.log(err)
+          console.log(err)
         });
     },
     []
   ); 
 
 
-  return { rent,rent_remove,loading,loadingNextPage,rentBikeID,rentActive,SetRentActive}
+  return { rent,rent_remove,loading,loadingNextPage,rentBikeID,rentActive,setRentActive}
 }

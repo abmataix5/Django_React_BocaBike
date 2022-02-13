@@ -1,7 +1,9 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect,useCallback} from 'react'
 import { useStations } from "../hooks/useStations";
 import StationsService from '../services/getStations'
 import { useRents } from './useRent';
+
+
 export  function useSingleStation ({ name }) {
   
   const{rentActive} = useRents()
@@ -27,6 +29,8 @@ export  function useSingleStation ({ name }) {
         })
     }
   }, [station, name,rentActive])
+
+
 
   return {station, isLoading, isError}
 }

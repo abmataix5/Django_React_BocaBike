@@ -10,7 +10,7 @@ import Header from "./components/client/header"
 import {BikesContextProvider} from "./context/BikesContext"
 import {StationsContextProvider} from "./context/StationsContext"
 import {UserContextProvider} from "./context/UserContext"
-
+import { RentsContextProvider } from "./context/RentsContext";
 
 const HomePage = React.lazy(() => import("./pages/client/home"));
 const StationsPage = React.lazy(() => import("./pages/client/stations"));
@@ -41,6 +41,8 @@ function App() {
           <UserContextProvider>
           <StationsContextProvider>
           <BikesContextProvider>
+          <RentsContextProvider>
+
 
             <Routes>
               <Route exact path='/' element={<HomePage/>}/>
@@ -54,6 +56,8 @@ function App() {
               <Route exact path='/manageStations' element={<ManageStations/>}/> 
             </Routes>
 
+            
+          </RentsContextProvider>
           </BikesContextProvider>
           </StationsContextProvider>
           </UserContextProvider>

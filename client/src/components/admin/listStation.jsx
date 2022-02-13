@@ -16,11 +16,11 @@ console.log(stations);
         <tbody>
 
         <tr>
-            <td width="390">Nombre estación</td>
-            <td width="390">Localización</td>
-            <td width="390">Estado de la estación</td>
-            <td width="390"></td>
-            <td width="390"></td>
+            <th width="390">Nombre estación</th>
+            <th width="390">Localización</th>
+            <th width="390">Estado de la estación</th>
+            <th width="390">Número de slots</th>
+            <th width="390"></th>
         
         </tr>    
 
