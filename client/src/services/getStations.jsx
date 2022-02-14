@@ -26,6 +26,11 @@ const StationsService = {
         return ApiService().put(`stations/stationUpdate/${id_station}/`,state_station);
     },
 
+    getAllIncidents() {
+    
+        return ApiService().get(`stations/incident/`);
+    },
+
 
     
 

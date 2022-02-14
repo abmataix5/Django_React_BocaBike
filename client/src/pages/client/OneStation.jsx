@@ -104,9 +104,9 @@ export default function StationDetail() {
 
             <form>
         
-                <div class="form-group">
-                    <label for="incidentText">Escribe aquí la incidencia</label>
-                    <textarea type="textfield" class="form-control" id="incidentText" placeholder="..."/>
+                <div className="form-group">
+                    <label htmlFor="incidentText">Escribe aquí la incidencia</label>
+                    <textarea type="textfield" className="form-control" id="incidentText" placeholder="..."/>
                 </div>
         </form>
 

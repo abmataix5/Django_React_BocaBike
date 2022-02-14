@@ -13,20 +13,19 @@ export default function NavDashboard () {
         <div className="position-sticky pt-3 ">
           <ul className="nav flex-column text-white">
             <li className="nav-item">
-            
-              <Link to={'/dashboard'} className="nav-link active text-white">Dashboard</Link>
+             <Link to={'/dashboard'} className="nav-link active text-white">Dashboard</Link>
             </li>
             <li className="nav-item mt-4">
-            <Link to={'/manageBikes'} className="nav-link active text-white">Administrar Bicicletas</Link>
+              <Link to={'/manageBikes'} className="nav-link active text-white">Administrar Bicicletas</Link>
             </li>
             <li className="nav-item text-white  mt-4">
-            <Link to={'/manageStations'} className="nav-link active text-white">Administrar Estaciones</Link>
+             <Link to={'/manageStations'} className="nav-link active text-white">Administrar Estaciones</Link>
             </li>
             <li className="nav-item  mt-4">
-            <Link to={'/manageUsers'} className="nav-link active text-white">Administrar Usuarios</Link>
+             <Link to={'/manageUsers'} className="nav-link active text-white">Administrar Usuarios</Link>
             </li>
             <li className="nav-item  mt-4">
-            <Link to={'/managesIncidents'} className="nav-link active text-white">Administrar Incidencias</Link>
+              <Link to={'/manageIncidents'} className="nav-link active text-white">Administrar Incidencias</Link>
             </li>
            
           </ul>

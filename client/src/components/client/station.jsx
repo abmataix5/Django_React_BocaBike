@@ -62,9 +62,9 @@ export default function Station ({ station}) {
 
         <form>
        
-            <div class="form-group">
-                <label for="formGroupExampleInput2">Escribe aquí la incidencia</label>
-                <textarea type="textfield" class="form-control" id="formGroupExampleInput2" placeholder="..."/>
+            <div className="form-group">
+                <label htmlFor="formGroupExampleInput2">Escribe aquí la incidencia</label>
+                <textarea type="textfield" className="form-control" id="formGroupExampleInput2" placeholder="..."/>
             </div>
        </form>
 

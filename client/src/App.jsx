@@ -11,6 +11,7 @@ import {BikesContextProvider} from "./context/BikesContext"
 import {StationsContextProvider} from "./context/StationsContext"
 import {UserContextProvider} from "./context/UserContext"
 import { RentsContextProvider } from "./context/RentsContext";
+import { IncidentsContextProvider } from "./context/IncidentsContext";
 
 const HomePage = React.lazy(() => import("./pages/client/home"));
 const StationsPage = React.lazy(() => import("./pages/client/stations"));
@@ -21,7 +22,8 @@ const StationDetail = React.lazy(() => import("./pages/client/OneStation"));
 const Dashboard = React.lazy(() => import("./pages/admin/dashboard"));
 const ManageBikes =  React.lazy(() => import("./pages/admin/manageBikes"));
 const ManageStations =  React.lazy(() => import("./pages/admin/manageStations"));
-const Incidents = React.lazy(() => import("./pages/client/incident"));
+const ManageIncidents =  React.lazy(() => import("./pages/admin/manageIncidents"));
+
 
 function App() {
 
@@ -42,7 +44,7 @@ function App() {
           <StationsContextProvider>
           <BikesContextProvider>
           <RentsContextProvider>
-
+          <IncidentsContextProvider>
 
             <Routes>
               <Route exact path='/' element={<HomePage/>}/>
@@ -54,10 +56,11 @@ function App() {
               <Route exact path='/dashboard' element={<Dashboard/>}/> 
               <Route exact path='/manageBikes' element={<ManageBikes/>}/> 
               <Route exact path='/manageStations' element={<ManageStations/>}/> 
-              <Route exact path='/incidents' element={<Incidents/>}/> 
+              <Route exact path='/manageIncidents' element={<ManageIncidents/>}/> 
+          
             </Routes>
 
-            
+          </IncidentsContextProvider>
           </RentsContextProvider>
           </BikesContextProvider>
           </StationsContextProvider>
