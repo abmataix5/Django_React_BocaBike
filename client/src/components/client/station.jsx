@@ -1,13 +1,23 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom';
+import { useIncidents } from '../../hooks/useIncidents';
 
 import { Button ,Modal} from 'react-bootstrap';
 export default function Station ({ station}) {
    
   const [show, setShow] = useState(false);
-
+  const {createIncident} = useIncidents();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [textIncident, setTextIncident] = useState("");
+
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+    console.log(textIncident);
+    createIncident(textIncident,station.id);
+
+  };
 
 
   return (
@@ -64,16 +74,21 @@ export default function Station ({ station}) {
        
             <div className="form-group">
                 <label htmlFor="formGroupExampleInput2">Escribe aquí la incidencia</label>
-                <textarea type="textfield" className="form-control" id="formGroupExampleInput2" placeholder="..."/>
+                <textarea type="textfield" 
+                className="form-control" 
+                id="formGroupExampleInput2" 
+                placeholder="..."  
+                onChange={(e) => setTextIncident(e.target.value)}
+                value={textIncident}/>
             </div>
        </form>
 
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose} onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleClose} onClick={handleSubmit}>
             Enviar incidencia
           </Button>
         </Modal.Footer>

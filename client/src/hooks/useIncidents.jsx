@@ -25,6 +25,26 @@ export function useIncidents () {
   }, [setIncidents])
 
 
+  const createIncident = useCallback(
+    (text, id_station) => {
+console.log(text)
+console.log(id_station)
+      StationsService.createIncident({"station": id_station,"text":text})
+        .then((data) => {
+ 
+            console.log(data)
+            
+            window.location.reload()
+          
+        })
+        .catch((err) => {
+    
+        });
+    },
+    []
+  );
 
-  return { incidents,loading,setIncidents}
+
+
+  return { incidents,loading,setIncidents,createIncident}
 }

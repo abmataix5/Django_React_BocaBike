@@ -31,6 +31,11 @@ const StationsService = {
         return ApiService().get(`stations/incident/`);
     },
 
+    createIncident(incident_info) { 
+        console.log(incident_info)
+        return ApiService().post(`stations/incident/`,incident_info);
+    },
+
 
     
 

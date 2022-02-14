@@ -35,6 +35,8 @@ class Incident(TimestampedModel):
     user = models.ForeignKey("profiles.Profile",on_delete=models.CASCADE)
     station = models.ForeignKey('stations.Station',on_delete=models.CASCADE)
     text = models.CharField(max_length=500,default='Problema en la esatción')
+    state = models.CharField(max_length=500,default='Leida')
+
 
 
     def __str__(self):
