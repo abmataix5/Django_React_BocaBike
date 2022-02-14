@@ -1,10 +1,11 @@
-import React from "react";
+import React ,{useState}from "react";
 import StationInfoDetails from "../../components/client/stationDetails";
 import { useParams } from 'react-router-dom';
 import { useSingleStation } from "../../hooks/useSingleStation" 
 import Loading from 'react-simple-loading';
 import { Link} from "react-router-dom";
 import { useUser } from "../../hooks/useUser";
+import { Button ,Modal} from 'react-bootstrap';
 
 export default function StationDetail() {
 
@@ -14,11 +15,24 @@ export default function StationDetail() {
 
   const {  isLogged } = useUser(); 
   
+     
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
 
 
     return (
 
-        station === undefined ? <Loading></Loading> :
+        station === undefined 
+        
+        ? 
+        <Loading></Loading> 
+        
+        :
+
+        <>
 
           <div className="container mt-5">
 
@@ -37,7 +51,7 @@ export default function StationDetail() {
                             
                                 <button className="btn btn-primary btn-rounded">Seguir estación</button>
                             
-                                <button className="btn btn-danger btn-rounded">Reportar incidencia</button>
+                                <button className="btn btn-danger btn-rounded" onClick={handleShow}>Reportar incidencia</button>
                             </div>
 
                             <div className="col-lg-12 col-md-12 col-sm-12 mt-2">
@@ -78,6 +92,37 @@ export default function StationDetail() {
 
         </div>
 
+
+
+
+
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+            <Modal.Title>Crear incidencia para la estación : {station.name}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+
+            <form>
+        
+                <div class="form-group">
+                    <label for="incidentText">Escribe aquí la incidencia</label>
+                    <textarea type="textfield" class="form-control" id="incidentText" placeholder="..."/>
+                </div>
+        </form>
+
+            </Modal.Body>
+            <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose} onClick={handleClose}>
+                Cerrar
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+                Enviar incidencia
+            </Button>
+            </Modal.Footer>
+        </Modal>
+
+
+        </>
 
     );
   }
