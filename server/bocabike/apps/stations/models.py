@@ -1,5 +1,5 @@
 from django.db import models
-
+from bocabike.apps.core.models import TimestampedModel
 # Create your models here.
 
 
@@ -25,6 +25,16 @@ class Slot(models.Model):
     station = models.ForeignKey('stations.Station',related_name='slots',on_delete=models.CASCADE)
     id_bike = models.OneToOneField('bikes.Bike' , related_name='slots' , on_delete=models.DO_NOTHING,blank=True,null=True)
     slot_state = models.CharField(max_length=200,default='Ocupado')
+
+
+    def __str__(self):
+        return str(self.id)
+
+class Incident(TimestampedModel):
+
+    user = models.ForeignKey("profiles.Profile",on_delete=models.CASCADE)
+    station = models.ForeignKey('stations.Station',on_delete=models.CASCADE)
+    text = models.CharField(max_length=500,default='Problema en la esatción')
 
 
     def __str__(self):

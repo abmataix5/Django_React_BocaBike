@@ -5,10 +5,10 @@ from rest_framework.permissions import (
 )
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Station
-from .serializers import StationSerializer,SlotSerializer,StationListDetailSerializer
+from .models import Station,Slot,Incident
+from .serializers import IncidentSerializer, StationSerializer,SlotSerializer,StationListDetailSerializer
 from rest_framework.generics import RetrieveAPIView
-from .models import Slot
+
 class ListStation(generics.ListAPIView):
     queryset = Station.objects.all()
     pagination_class = None
@@ -143,3 +143,45 @@ class StationUpdateStateAPIView(generics.UpdateAPIView):
         serializer.save()
 
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
+class ListCreateIncidentAPIView(generics.ListCreateAPIView):
+
+    queryset = Incident.objects.all()
+    serializer_class = IncidentSerializer
+    permission_classes = (IsAuthenticated,)
+
+
+    def list(self, request):
+        serializer_data = self.get_queryset()
+        serializer = self.serializer_class(serializer_data, many=True)
+
+        return Response({
+            'incidents': serializer.data
+        }, status=status.HTTP_200_OK)
+
+    def create(self, request):
+    
+      
+        serializer_context = {
+            'user': request.user.profile.id,
+            'station' : request.data['station'],
+            'text' :request.data['text'],
+         
+            'request': request
+        }
+
+        
+        serializer_data = request.data.get('incident',{})
+     
+        serializer = self.serializer_class(
+            data = serializer_data,
+            context = serializer_context
+        )
+        
+   
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

@@ -10,7 +10,8 @@ from .views import (
   StationsBikeAPIView,
   ProfileRetrieveAPIView,
   SlotRentUpdateAPIView,
-  StationUpdateStateAPIView
+  StationUpdateStateAPIView,
+  ListCreateIncidentAPIView
 )
 
 
@@ -21,11 +22,15 @@ router = DefaultRouter()
 
 urlpatterns = [
     re_path(r'^', include(router.urls)),
-    
+
+
+
     re_path(r'^stations/?$', ListStation.as_view()),
+    re_path(r'^stations/incident/?$', ListCreateIncidentAPIView.as_view()),
     re_path(r'^stations/(?P<name>\w+)/?$', StationsBikeAPIView.as_view()),
     re_path(r'^station/?$', ProfileRetrieveAPIView.as_view()),
     re_path(r'^stations/slotUpdate/(?P<idSlot>\w+)/?$', SlotRentUpdateAPIView.as_view()),
     re_path(r'^stations/stationUpdate/(?P<idStation>\w+)/?$', StationUpdateStateAPIView.as_view()),
+
 
 ]
