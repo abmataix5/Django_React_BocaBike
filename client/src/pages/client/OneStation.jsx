@@ -6,7 +6,7 @@ import Loading from 'react-simple-loading';
 import { Link} from "react-router-dom";
 import { useUser } from "../../hooks/useUser";
 import { Button ,Modal} from 'react-bootstrap';
-
+import { useIncidents } from '../../hooks/useIncidents';
 export default function StationDetail() {
 
   const { name } = useParams(); /* ID de la estación seleccionada */
@@ -15,13 +15,23 @@ export default function StationDetail() {
 
   const {  isLogged } = useUser(); 
   
-     
+  const {createIncident} = useIncidents();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   console.log(station)
+
+  const [textIncident, setTextIncident] = useState("");
+
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+    console.log(textIncident);
+    createIncident(textIncident,station.id);
+
+  };
 
 
     return (
@@ -98,29 +108,34 @@ export default function StationDetail() {
 
 
         <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-            <Modal.Title>Crear incidencia para la estación : {station.name}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
+        <Modal.Header closeButton>
+          <Modal.Title>Crear incidencia para la estación : {station.name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
 
-            <form>
-        
-                <div className="form-group">
-                    <label htmlFor="incidentText">Escribe aquí la incidencia</label>
-                    <textarea type="textfield" className="form-control" id="incidentText" placeholder="..."/>
-                </div>
-        </form>
+        <form>
+       
+            <div className="form-group">
+                <label htmlFor="formGroupExampleInput2">Escribe aquí la incidencia</label>
+                <textarea type="textfield" 
+                className="form-control" 
+                id="formGroupExampleInput2" 
+                placeholder="..."  
+                onChange={(e) => setTextIncident(e.target.value)}
+                value={textIncident}/>
+            </div>
+       </form>
 
-            </Modal.Body>
-            <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose} onClick={handleClose}>
-                Cerrar
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-                Enviar incidencia
-            </Button>
-            </Modal.Footer>
-        </Modal>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cerrar
+          </Button>
+          <Button variant="primary" onClick={handleClose} onClick={handleSubmit}>
+            Enviar incidencia
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
 
         </>

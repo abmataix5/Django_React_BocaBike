@@ -17,7 +17,7 @@ export function useIncidents () {
 
     StationsService.getAllIncidents()
       .then(incidents => {
-        console.log(incidents)
+     
         setIncidents(incidents.data.incidents)
         setLoading(false)
         

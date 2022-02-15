@@ -1,6 +1,5 @@
 import React, { useState } from "react";
- import {getToken,destroyToken} from '../services/jwt_service'
-import {ApiService} from '../services/ApiService' 
+import {getToken,destroyToken} from '../services/jwt_service'
 import UserService from "../services/getUser";
 const Context = React.createContext({});
 
@@ -8,32 +7,35 @@ const Context = React.createContext({});
 export function UserContextProvider({ children }) {
   
 
-    //funcion que intenta obtener su propio usuario con ese token (sirve para detectar tokens invalidos o expirados)
+    // funcion que intenta obtener su propio usuario con ese token (sirve para detectar tokens invalidos o expirados)
     
-  /*   const check_auth = () => {
-      if (getToken()) {
+  const check_auth = () => {
+       if (getToken()) {
        
-        UserService.getUserData()
-        .then(({ data }) => {
-          console.log(data)
-          setUser(data.user)
-          setJWT(data.user.token)
+    
+         UserService.getUserData()
+        .then(( data ) => {
+          console.log(data.data.user)
+          setUser(data.data.user)
+          console.log(user)
+          setJWT(data.data.user.token)
         })
         .catch(({ response }) => {
+          console.log(response)
             destroyToken();
-            window.location.reload();
-          });
+          window.location.reload(); 
+          }); 
       } else {
         destroyToken();
-      }
-    } */
+      } 
+    } 
 
     // por defecto se obtiene del localStorage (comprobando el login) le asignamos una funcion por si se vuelve a renderizar.
-    const [jwt, setJWT] = useState(/* () => check_auth() */);
+    const [jwt, setJWT] = useState(() => check_auth());
 
 
-  const [user, setUser] =useState(null)
-  const [admin, setAdmin] =useState(localStorage.getItem('admin'))
+  const [user, setUser] = useState(null)
+  const [admin, setAdmin] = useState(null)
 
 
 

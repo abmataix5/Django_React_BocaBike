@@ -38,34 +38,36 @@ function App() {
     
         <BrowserRouter>
 
-        <Header/>
         
-          <UserContextProvider>
-          <StationsContextProvider>
-          <BikesContextProvider>
-          <RentsContextProvider>
-          <IncidentsContextProvider>
+            <StationsContextProvider>
+              <BikesContextProvider>
+                <RentsContextProvider>
+                  <IncidentsContextProvider>
+                     <UserContextProvider>
 
-            <Routes>
-              <Route exact path='/' element={<HomePage/>}/>
-              <Route exact path='/stations' element={<StationsPage/>}/> 
-              <Route exact path='/info' element={<InfoPage/>}/> 
-              <Route exact path='/login' element={<Login/>}/> 
-              <Route exact path='/register' element={<Register/>}/> 
-              <Route exact path='/stationDetail/:name' element={<StationDetail/>}/> 
-              <Route exact path='/dashboard' element={<Dashboard/>}/> 
-              <Route exact path='/manageBikes' element={<ManageBikes/>}/> 
-              <Route exact path='/manageStations' element={<ManageStations/>}/> 
-              <Route exact path='/manageIncidents' element={<ManageIncidents/>}/> 
-          
-            </Routes>
+                     <Header/>
 
-          </IncidentsContextProvider>
-          </RentsContextProvider>
-          </BikesContextProvider>
-          </StationsContextProvider>
-          </UserContextProvider>
-
+                      <Routes>
+                        <Route exact path='/' element={<HomePage/>}/>
+                        <Route exact path='/stations' element={<StationsPage/>}/> 
+                        <Route exact path='/info' element={<InfoPage/>}/> 
+                        <Route exact path='/login' element={<Login/>}/> 
+                        <Route exact path='/register' element={<Register/>}/> 
+                        <Route exact path='/stationDetail/:name' element={<StationDetail/>}/> 
+                        <Route exact path='/dashboard' element={<Dashboard/>}/> 
+                        <Route exact path='/manageBikes' element={<ManageBikes/>}/> 
+                        <Route exact path='/manageStations' element={<ManageStations/>}/> 
+                        <Route exact path='/manageIncidents' element={<ManageIncidents/>}/> 
+                    
+                      </Routes>
+                    
+                      </UserContextProvider>
+                  </IncidentsContextProvider>
+                </RentsContextProvider>
+                </BikesContextProvider>
+            </StationsContextProvider>
+        
+         
     
       </BrowserRouter>
       

@@ -5,10 +5,7 @@ import { useUser } from "../../hooks/useUser"
 export default function Header () {
 
 
-  const {isLogged,logout} = useUser();
-
-  console.log(isLogged);
-  
+  const {isLogged,logout,user} = useUser();
   
     return (
 
@@ -56,26 +53,22 @@ export default function Header () {
 
 
                       <ul className="navbar-nav">
+
+                        
                         
                         <li className="nav-item dropdown">
-                          <a
-                            className="nav-link dropdown-toggle d-flex align-items-center"
-                            href="#"
-                            id="navbarDropdownMenuLink"
-                            role="button"
-                            data-mdb-toggle="dropdown"
-                            aria-expanded="false"
-                          >
+                       
                             <img
                               src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp"
-                              className="rounded-circle"
-                              height="22"
+                              className="rounded-circle m-3"
+                              height="42"
                               alt="Portrait of a Woman"
                               loading="lazy"
                             />
-                          </a>
+                        
                           
                         </li>
+                      
                       </ul>
 
                     <button  className="btn btn-danger px-3 me-2" onClick={logout}>CheckOut</button>

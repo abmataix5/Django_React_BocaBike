@@ -20,6 +20,7 @@ console.log(stations)
         
 
             <h2>Administrar estaciones</h2>
+            <button className="btn btn-success mb-3">Crear nueva estación</button>
             
             <ListStationsAdmin stations={stations}/>
             </main>

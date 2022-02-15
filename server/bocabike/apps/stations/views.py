@@ -9,7 +9,7 @@ from .models import Station,Slot,Incident
 from .serializers import IncidentSerializer, StationSerializer,SlotSerializer,StationListDetailSerializer
 from rest_framework.generics import RetrieveAPIView
 
-class ListStation(generics.ListAPIView):
+class ListStation(generics.ListCreateAPIView):
     queryset = Station.objects.all()
     pagination_class = None
     permission_classes = (AllowAny,)

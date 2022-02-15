@@ -6,16 +6,8 @@ import { destroyToken } from './jwt_service';
   
     getUserData() {
       
-        ApiService().get('user/')
-        .then(({ data }) => {
-          return data.user
-        })
-        .catch(({ response }) => {
-            console.log(response)
-            destroyToken();
-            window.location.reload(); 
-        });
-      },
+       return ApiService().get('user/');
+    }
 
     
 
