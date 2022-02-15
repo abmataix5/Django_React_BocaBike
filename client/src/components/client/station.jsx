@@ -20,6 +20,7 @@ export default function Station ({ station}) {
   };
 
 
+
   return (
 
     station.state_station === 'OFF'   ?   
@@ -56,7 +57,7 @@ export default function Station ({ station}) {
                 <Link to={`/stationDetail/${station.name}`} className="btn btn-sm btn-primary">Mas información</Link>
                 <button type="button" className="btn btn-sm btn-danger" onClick={handleShow}>Reportar incidencia</button>
               </div>
-              <small className="text-muted text">Bicis disponibles: <strong>{station.available_bikes}</strong></small>
+              <small className="text-muted text">Estado: <strong>{station.state_station}</strong></small>
             </div>
           </div>
         </div>

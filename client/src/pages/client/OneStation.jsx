@@ -21,6 +21,7 @@ export default function StationDetail() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  console.log(station)
 
 
     return (
@@ -41,13 +42,13 @@ export default function StationDetail() {
                     
                         <div className="row">
                             <div className="col-lg-5 col-md-5 col-sm-6">
-                                <div className="white-box text-center"><img src="../descarga.jpeg" width="100%"  className="img-responsive"/></div>
+                                <div className="white-box text-center"><img src={"." + station.image_url} width="100%"  className="img-responsive"/></div>
                             </div>
                             <div className="col-lg-7 col-md-7 col-sm-6">
                                 <h4 className="box-title mt-5">Información sobre la estación</h4>
                                 <p>Estación : {station.name}</p>
                                 <p>Localización : {station.location} </p>
-                                <p>Bicis disponibles en este momento : {station.available_bikes}</p>
+                                <p>Slots en funcionamineto : {station.slots.length}</p>
                             
                                 <button className="btn btn-primary btn-rounded">Seguir estación</button>
                             
