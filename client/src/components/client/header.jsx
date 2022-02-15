@@ -55,7 +55,7 @@ export default function Header () {
                 <>
 
 
-                      <ul className="navbar-nav">
+                      <ul id="userLoguedItem" className="navbar-nav">
                         
                         <li className="nav-item dropdown">
                           <a
@@ -78,7 +78,7 @@ export default function Header () {
                         </li>
                       </ul>
 
-                    <button  className="btn btn-danger px-3 me-2" onClick={logout}>CheckOut</button>
+                    <button id="logOut"  className="btn btn-danger px-3 me-2" onClick={logout}>CheckOut</button>
 
                   
                 </>
