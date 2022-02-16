@@ -38,10 +38,10 @@ function App() {
     
         <BrowserRouter>
 
-        
+        <RentsContextProvider>
             <StationsContextProvider>
               <BikesContextProvider>
-                <RentsContextProvider>
+               
                   <IncidentsContextProvider>
                      <UserContextProvider>
 
@@ -63,10 +63,10 @@ function App() {
                     
                       </UserContextProvider>
                   </IncidentsContextProvider>
-                </RentsContextProvider>
-                </BikesContextProvider>
+                
+              </BikesContextProvider>
             </StationsContextProvider>
-        
+            </RentsContextProvider>
          
     
       </BrowserRouter>

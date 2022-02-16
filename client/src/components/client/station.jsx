@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom';
 import { useIncidents } from '../../hooks/useIncidents';
-
 import { Button ,Modal} from 'react-bootstrap';
+
 export default function Station ({ station}) {
    
   const [show, setShow] = useState(false);

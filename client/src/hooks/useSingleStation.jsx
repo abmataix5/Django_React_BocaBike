@@ -1,25 +1,25 @@
-import {useState, useEffect,useCallback} from 'react'
+import {useState, useEffect,useCallback, useContext} from 'react'
 import { useStations } from "../hooks/useStations";
 import StationsService from '../services/getStations'
 import { useRents } from './useRent';
-
+import  RentContext  from '../context/RentsContext';
 
 export  function useSingleStation ({ name }) {
   
-  const{rentActive} = useRents()
+  const {rentActive} = useContext(RentContext)
   const {stations} = useStations()
-  const gifFromCache = stations.find(singleGif => singleGif.name === name)
+  const stationFromCache = stations.find(singleStation => singleStation.name === name)
 
-  const [station, setStation] = useState(gifFromCache)
+  const [station, setStation] = useState(stationFromCache)
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
   useEffect(function () {
-    if (!station) {
+
       setIsLoading(true)
       StationsService.getOneStation({ name })
         .then(station => {
-
+console.log(station)
           setStation(station.data.results[0])
           setIsLoading(false)
           setIsError(false)
@@ -27,8 +27,9 @@ export  function useSingleStation ({ name }) {
           setIsLoading(true)
           setIsError(true)
         })
-    }
-  }, [station, name,rentActive])
+    
+    console.log('oaos')
+  }, [rentActive])
 
 
 

@@ -1,5 +1,5 @@
 import UserContext from "../context/UserContext"
-import  RentsContextProvider  from "../context/RentsContext";
+import  RentContext  from "../context/RentsContext";
 import {useContext, useCallback, useState} from 'react'
 import getBikes from '../services/getBikes'
 
@@ -8,7 +8,7 @@ import StationsService from "../services/getStations";
 
 export function useRents () {
 
-  const{rentActive,setRentActive} = useContext(RentsContextProvider)
+  const{rentActive,setRentActive} = useContext(RentContext)
   const { user } = useContext(UserContext)
   const [loading, setLoading] = useState(false)
   const [loadingNextPage, setLoadingNextPage] = useState(false)
@@ -26,9 +26,10 @@ export function useRents () {
             .then((data) => {
 
                 localStorage.setItem('bike_rentID',data.data.bike.id) /* Guardamos bici alquilada activa */
+                
                 setRentActive(data.data.bike.id)
-                console.log(rentActive)
-                window.location.reload()  
+                
+             /*    window.location.reload()   */
 
             })
             .catch((err) => {
@@ -60,8 +61,8 @@ export function useRents () {
         .then((data) => {
 
           localStorage.removeItem('bike_rentID')
-          setRentActive(false)
-          window.location.reload()
+          setRentActive(data)
+     
        
         })
         .catch((err) => {

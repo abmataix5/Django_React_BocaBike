@@ -15,9 +15,9 @@ export function UserContextProvider({ children }) {
     
          UserService.getUserData()
         .then(( data ) => {
-          console.log(data.data.user)
+         
           setUser(data.data.user)
-          console.log(user)
+      
           setJWT(data.data.user.token)
         })
         .catch(({ response }) => {

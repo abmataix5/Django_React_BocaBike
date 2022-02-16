@@ -1,4 +1,4 @@
-import React ,{useState}from "react";
+import React ,{useState,useContext}from "react";
 import StationInfoDetails from "../../components/client/stationDetails";
 import { useParams } from 'react-router-dom';
 import { useSingleStation } from "../../hooks/useSingleStation" 
@@ -7,6 +7,9 @@ import { Link} from "react-router-dom";
 import { useUser } from "../../hooks/useUser";
 import { Button ,Modal} from 'react-bootstrap';
 import { useIncidents } from '../../hooks/useIncidents';
+import  RentContext  from "../../context/RentsContext";
+
+
 export default function StationDetail() {
 
   const { name } = useParams(); /* ID de la estación seleccionada */
@@ -21,7 +24,7 @@ export default function StationDetail() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  console.log(station)
+ /*  console.log(station) */
 
   const [textIncident, setTextIncident] = useState("");
 
@@ -33,6 +36,9 @@ export default function StationDetail() {
 
   };
 
+
+  const{rentActive} = useContext(RentContext)
+  console.log(rentActive)
 
     return (
 
