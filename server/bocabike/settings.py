@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'bocabike.apps.core',
     'bocabike.apps.profiles',
     'bocabike.apps.authentication',
-    'bocabike.apps.rents'
+    'bocabike.apps.rents',
+    'bocabike.apps.notifications'
 
 
 ]
@@ -108,7 +109,7 @@ WSGI_APPLICATION = 'bocabike.wsgi.application'
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'test',
+            'NAME': 'reserva',
             'USER': 'root',
             'PASSWORD': 'ola123',
             'HOST': 'localhost',
