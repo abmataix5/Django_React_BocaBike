@@ -44,7 +44,7 @@ class NotificationSerializer(serializers.ModelSerializer):
         queryset = Notification.objects.raw("SELECT * FROM notifications_notification as n WHERE n.state = 'No Leído' and n.incident_id IN (SELECT id FROM stations_incident as i WHERE i.user_id = " + user + ")")
             
         serialized_notification = []
-      
+        print(queryset.iterator())
         for notification in queryset.iterator():
             notification_s = NotificationSerializer.to_notification(notification)
             serialized_notification.append(notification_s)

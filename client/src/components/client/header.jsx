@@ -10,7 +10,7 @@ export default function Header () {
 
   const {isLogged,logout,user,isAdminLogged} = useUser();
   const {notifications} = useContext(IncidentsContext)
-  console.log(notifications)
+ 
   const headerAdmin = localStorage.getItem('isAdmin') 
 
 
@@ -18,10 +18,11 @@ export default function Header () {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
  
-const {notificationUpdatestate} =  useIncidents();
+  const {notificationUpdatestate} =  useIncidents();
+
   const handleSubmit = (e) => {
 
-    console.log(notifications)
+  
     notificationUpdatestate(notifications)
     setShow(false)
   };
@@ -46,6 +47,7 @@ const {notificationUpdatestate} =  useIncidents();
           <div className="collapse navbar-collapse" id="navbarButtonsExample">
         
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              
               {
                 headerAdmin === 'true' 
                 ? 

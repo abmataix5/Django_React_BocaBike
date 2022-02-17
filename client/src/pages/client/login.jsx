@@ -15,7 +15,7 @@ export default function Login() {
     console.log(isLogged);
     if (isLogged) {
 
-       history("/stations"); 
+       history("/"); 
   
     }
   }, [isLogged]);
