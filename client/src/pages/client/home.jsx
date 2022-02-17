@@ -1,24 +1,39 @@
 import React from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
-
+import Carousel from 'react-bootstrap/Carousel';
 export default function Home() {
 
     return (
-      <Carousel className="mt-5" width={1830}>
-      <div>
-          <img src="./descarga.jpeg" />
-          <p className="legend">Legend 1</p>
-      </div>
-      <div>
-          <img src="assets/2.jpeg" />
-          <p className="legend">Legend 2</p>
-      </div>
-      <div>
-          <img src="assets/3.jpeg" />
-          <p className="legend">Legend 3</p>
-      </div>
-  </Carousel>
+        <> 
+        <div className="container">
+            <div className="row p-3">
+                <Carousel>
+                <Carousel.Item interval={2000}>
+                    <img
+                    className="d-block w-100"
+                    src='./bici.jpeg'   //800x400img
+                    alt="First slide"
+                    />
+    
+                </Carousel.Item>
+                <Carousel.Item interval={3000}>
+                    <img
+                    className="d-block w-100"
+                    src='./bici.jpeg'  //800x400img
+                    alt="Second slide"
+                    />
+        
+                </Carousel.Item>
+                <Carousel.Item interval={3000}>
+                    <img
+                    className="d-block w-100"
+                    src='./bici.jpeg'  //800x400img
+                    alt="Third slide"
+                    />
 
+                </Carousel.Item>
+                </Carousel>
+            </div>
+        </div>
+        </>
     );
   }

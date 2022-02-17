@@ -1,12 +1,23 @@
 import React,{useState} from 'react'
 import { Button ,Modal} from 'react-bootstrap';
+import { useIncidents } from '../../hooks/useIncidents';
 
 export default function Listincidents ({incident}) {
 
+  const {adminResponse} = useIncidents();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [textIncident, setTextIncident] = useState("");
+  const [textNotification, setTextNotification] = useState("");
+
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+    
+    adminResponse(incident.id,textNotification);
+    setShow(false)
+  };
+
 
   
        return(
@@ -60,8 +71,8 @@ export default function Listincidents ({incident}) {
                 className="form-control" 
                 id="formGroupExampleInput2" 
                 placeholder="..."  
-                onChange={(e) => setTextIncident(e.target.value)}
-                value={textIncident}/>
+                onChange={(e) => setTextNotification(e.target.value)}
+                value={textNotification}/>
             </div>
        </form>
 
@@ -70,7 +81,7 @@ export default function Listincidents ({incident}) {
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleClose} onClick={handleSubmit}>
             Responder incidencia
           </Button>
         </Modal.Footer>

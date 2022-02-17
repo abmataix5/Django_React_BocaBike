@@ -41,10 +41,8 @@ function App() {
         <RentsContextProvider>
             <StationsContextProvider>
               <BikesContextProvider>
-               
                   <IncidentsContextProvider>
                      <UserContextProvider>
-
                      <Header/>
 
                       <Routes>

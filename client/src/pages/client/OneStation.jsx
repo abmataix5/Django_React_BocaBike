@@ -33,7 +33,7 @@ export default function StationDetail() {
     e.preventDefault();
     console.log(textIncident);
     createIncident(textIncident,station.id);
-
+    setShow(false)
   };
 
 

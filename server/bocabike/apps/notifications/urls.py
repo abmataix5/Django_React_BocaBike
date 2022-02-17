@@ -5,7 +5,8 @@ from rest_framework.routers import DefaultRouter
 
 
 from .views import (
-ListCreateNotificationAPIView
+ListCreateNotificationAPIView,
+NotificationUpdateStateAPIView
 )
 
 
@@ -20,7 +21,7 @@ urlpatterns = [
 
 
     re_path(r'^notifications/?$', ListCreateNotificationAPIView.as_view()),
-
+    re_path(r'^notifications/updateState/?$', NotificationUpdateStateAPIView.as_view()),
 
 
 ]

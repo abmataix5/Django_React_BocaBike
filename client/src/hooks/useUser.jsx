@@ -27,8 +27,8 @@ export function useUser() {
             saveToken(data.data.user.token)
             setJWT(data.data.user.token);
             saveUser(data.data.user)
-         
-            window.location.reload();     
+       
+          window.location.reload();      
           
           
         })
@@ -53,7 +53,8 @@ export function useUser() {
       
             setState({loading:false,error:false,loadingUser: false})
             saveToken(data.data.user.token)
-            setJWT(data.data.token);  
+            setJWT(data.data.user.token);  
+            localStorage.setItem('admin',data.data.user.is_staff)
   
             window.location.reload();  
           
@@ -75,14 +76,28 @@ export function useUser() {
     return false
   }
 
+
+  const check_admin = () => {
+    
+    if(localStorage.getItem('isAdmin') === true){
+      return true
+    }
+    return false
+  }
+ 
+
+
+
   const logout = useCallback(() => {
+    localStorage.clear()
     destroyToken()
-   window.location.reload()
+    window.location.reload()
   }, [setJWT]);
 
   const saveUser = (user) => {
     setUser(user);
   }
+
 
 
 
@@ -94,7 +109,9 @@ export function useUser() {
     state,
     register_f,
     logout,
-    setUser
+    setUser,
+    isAdminLogged : check_admin()
+
 
   };
 }

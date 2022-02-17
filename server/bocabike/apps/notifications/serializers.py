@@ -11,20 +11,45 @@ from .models import Notification
 
 class NotificationSerializer(serializers.ModelSerializer):
 
-    user = ProfileSerializer(read_only = True)
+    user_admin = ProfileSerializer(read_only = True)
     incident = IncidentSerializer(read_only = True)
 
     class Meta:
         fields = (
             'id',
             'incident',
-            'user',
+            'user_admin',
             'text',
             'state',
             'created_at'
        
         )
-        model = Incident 
+        model = Notification 
+
+
+    def to_notification(instance):
+        return {
+            'id': instance.id,
+            'text': instance.text,
+            'state': instance.state,
+            'created_at': instance.created_at
+
+        }
+    
+
+    def GetNotificationOnlyUserLogged(context):
+
+        user = str(context['user'])
+       
+        queryset = Notification.objects.raw("SELECT * FROM notifications_notification as n WHERE n.state = 'No Leído' and n.incident_id IN (SELECT id FROM stations_incident as i WHERE i.user_id = " + user + ")")
+            
+        serialized_notification = []
+      
+        for notification in queryset.iterator():
+            notification_s = NotificationSerializer.to_notification(notification)
+            serialized_notification.append(notification_s)
+
+        return serialized_notification
 
 
     def create(self, validated_data):
@@ -33,8 +58,8 @@ class NotificationSerializer(serializers.ModelSerializer):
     
 
         try:
-            id_user = self.context['user']
-            user = Profile.objects.get(id= id_user)
+            id_user = self.context['user_admin']
+            user_admin = Profile.objects.get(user= id_user)
         
         except Profile.DoesNotExist:
              raise NotFound('No existe usuario con ese id')
@@ -51,6 +76,6 @@ class NotificationSerializer(serializers.ModelSerializer):
              
         text = self.context['text']
 
-        notification = Notification.objects.create(incident=incident,user=user,text=text)
-        print(notification)
+        notification = Notification.objects.create(incident=incident,user_admin=user_admin,text=text)
+      
         return notification

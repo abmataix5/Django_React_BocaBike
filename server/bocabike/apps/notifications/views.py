@@ -20,19 +20,23 @@ class ListCreateNotificationAPIView(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
 
 
-    def list(self, request):
-        serializer_data = self.get_queryset()
-        serializer = self.serializer_class(serializer_data, many=True)
 
-        return Response({
-            'notifications': serializer.data
-        }, status=status.HTTP_200_OK)
+
+    def list(self, request):
+
+        serializer_context = {
+            'user': request.user.profile.id
+        }
+
+        serializer = NotificationSerializer.GetNotificationOnlyUserLogged(context=serializer_context)
+
+        return Response(serializer, status=status.HTTP_200_OK)
 
     def create(self, request):
     
       
         serializer_context = {
-            'user': request.user.profile.id,
+            'user_admin': request.user.profile.id,
             'incident' : request.data['incident'],
             'text' :request.data['text'],
          
@@ -52,3 +56,36 @@ class ListCreateNotificationAPIView(generics.ListCreateAPIView):
         serializer.save()
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        
+
+class NotificationUpdateStateAPIView(generics.UpdateAPIView):
+
+
+    permission_classes = (IsAuthenticated,)
+    serializer_class = NotificationSerializer
+
+
+
+    def update(self,request):
+        
+        print(request.data)
+        
+        """ print(request.data)
+        serializer_context = {'request': request}
+
+        try:
+            serializer_instance = Notification.objects.get()
+        except Notification.DoesNotExist:
+            raise NotFound('No existe una estación con ese ID')
+            
+        serializer_data = request.data.get('notification', {})
+       
+        serializer = self.serializer_class(
+            serializer_instance, 
+            context=serializer_context,
+            data=serializer_data, 
+            partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save() """

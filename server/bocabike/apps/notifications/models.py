@@ -8,7 +8,7 @@ class Notification(TimestampedModel):
 
 
     incident = models.ForeignKey("stations.Incident",on_delete=models.CASCADE)
-    user = models.OneToOneField("profiles.Profile",on_delete=models.CASCADE)
+    user_admin = models.ForeignKey("profiles.Profile",on_delete=models.CASCADE)
     text = models.CharField(max_length=500,default='...')
     state = models.CharField(max_length=500,default='No leído')
    

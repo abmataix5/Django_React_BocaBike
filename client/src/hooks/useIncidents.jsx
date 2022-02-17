@@ -6,20 +6,19 @@ import IncidentsContext from '../context/IncidentsContext'
 
 export function useIncidents () {
   
-  const [loading, setLoading] = useState(false)
 
 
   const {incidents, setIncidents} = useContext(IncidentsContext)
 
 
   useEffect(function () {
-    setLoading(true)
+   
 
     StationsService.getAllIncidents()
       .then(incidents => {
      
         setIncidents(incidents.data.incidents)
-        setLoading(false)
+      
         
       })
   }, [setIncidents])
@@ -27,14 +26,35 @@ export function useIncidents () {
 
   const createIncident = useCallback(
     (text, id_station) => {
-console.log(text)
-console.log(id_station)
+
       StationsService.createIncident({"station": id_station,"text":text})
         .then((data) => {
  
             console.log(data)
+          
+        })
+        .catch((err) => {
+            console.log(err)
+        });
+    },
+    []
+  );
+
+
+
+
+  /* Respuesta del administrador a la incidencia de un usuario */
+
+
+  const adminResponse = useCallback(
+    (incident_id, textNotification) => {
+
+      StationsService.createNotification({"incident": incident_id,"text":textNotification})
+        .then((data) => {
+ 
+            console.log(data)
             
-            window.location.reload()
+     /*        window.location.reload() */
           
         })
         .catch((err) => {
@@ -46,5 +66,24 @@ console.log(id_station)
 
 
 
-  return { incidents,loading,setIncidents,createIncident}
+  const notificationUpdatestate = useCallback(
+    (notications) => {
+console.log(notications)
+       StationsService.updateNotificationState(notications)
+        .then((data) => {
+ 
+            console.log(data)
+                  
+        })
+        .catch((err) => {
+    
+        }); 
+    },
+    []
+  );
+
+
+
+
+  return { incidents,setIncidents,createIncident,adminResponse,notificationUpdatestate}
 }

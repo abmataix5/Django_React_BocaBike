@@ -15,7 +15,8 @@ export function UserContextProvider({ children }) {
     
          UserService.getUserData()
         .then(( data ) => {
-         
+         console.log(data.data)
+         localStorage.setItem('isAdmin',data.data.user.is_staff)
           setUser(data.data.user)
       
           setJWT(data.data.user.token)

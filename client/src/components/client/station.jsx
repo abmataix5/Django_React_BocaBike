@@ -16,7 +16,7 @@ export default function Station ({ station}) {
     e.preventDefault();
     console.log(textIncident);
     createIncident(textIncident,station.id);
-
+    setShow(false)
   };
 
 
@@ -89,7 +89,7 @@ export default function Station ({ station}) {
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={handleClose} onClick={handleSubmit}>
+          <Button variant="primary" onClick={handleSubmit}>
             Enviar incidencia
           </Button>
         </Modal.Footer>

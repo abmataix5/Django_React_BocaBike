@@ -36,7 +36,20 @@ const StationsService = {
         return ApiService().post(`stations/incident/`,incident_info);
     },
 
+    createNotification(notification_info) { 
+        console.log(notification_info)
+        return ApiService().post(`notifications/`,notification_info);
+    },
 
+    getNotifications() {
+    
+        return ApiService().get(`notifications/`);
+    },
+
+    updateNotificationState(arrayNotifications) { 
+
+        return ApiService().put(`notifications/updateState/`, JSON.stringify(arrayNotifications));
+    },
     
 
 }
