@@ -69,7 +69,7 @@ class NotificationSerializer(serializers.ModelSerializer):
         try:
             id_incident = self.context['incident']
             incident = Incident.objects.get(id= id_incident)
-            print(incident)
+           
         
         except Incident.DoesNotExist:
              raise NotFound('No existe incidencia con esa id')

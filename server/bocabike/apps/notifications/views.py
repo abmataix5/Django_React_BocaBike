@@ -43,7 +43,7 @@ class ListCreateNotificationAPIView(generics.ListCreateAPIView):
             'request': request
         }
 
-        print(serializer_context)
+       
         serializer_data = request.data.get('notification',{})
      
         serializer = self.serializer_class(
@@ -74,7 +74,7 @@ class NotificationUpdateStateAPIView(generics.UpdateAPIView):
         try:
             serializer_instance = Notification.objects.get(id=idNotification)
         except Notification.DoesNotExist:
-            raise NotFound('No existe una estación con ese ID')
+            raise NotFound('No existe una notificación con ese ID')
             
         serializer_data = request.data.get('notification', {})
         print(serializer_data)

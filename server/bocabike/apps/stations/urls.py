@@ -11,7 +11,8 @@ from .views import (
   ProfileRetrieveAPIView,
   SlotRentUpdateAPIView,
   StationUpdateStateAPIView,
-  ListCreateIncidentAPIView
+  ListCreateIncidentAPIView,
+  IncidentUpdateStateAPIView
 )
 
 
@@ -31,6 +32,7 @@ urlpatterns = [
     re_path(r'^station/?$', ProfileRetrieveAPIView.as_view()),
     re_path(r'^stations/slotUpdate/(?P<idSlot>\w+)/?$', SlotRentUpdateAPIView.as_view()),
     re_path(r'^stations/stationUpdate/(?P<idStation>\w+)/?$', StationUpdateStateAPIView.as_view()),
+    re_path(r'^stations/incidentUpdate/(?P<idIncident>\w+)/?$', IncidentUpdateStateAPIView.as_view()),
 
 
 ]

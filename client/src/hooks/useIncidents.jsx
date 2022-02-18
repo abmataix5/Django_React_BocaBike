@@ -8,11 +8,13 @@ export function useIncidents () {
   
 
 
-  const {incidents, setIncidents,checked,setChecked} = useContext(IncidentsContext)
+  const {incidents, setIncidents,checked,setChecked,setresponseAdminIncident,responseAdminIncident} = useContext(IncidentsContext)
+
 
 
   useEffect(function () {
-   
+
+    setresponseAdminIncident(false)
 
     StationsService.getAllIncidents()
       .then(incidents => {
@@ -21,7 +23,11 @@ export function useIncidents () {
       
         
       })
-  }, [setIncidents])
+  }, [setIncidents,responseAdminIncident])
+
+
+
+
 
 
   const createIncident = useCallback(
@@ -51,27 +57,40 @@ export function useIncidents () {
 
       StationsService.createNotification({"incident": incident_id,"text":textNotification})
         .then((data) => {
- 
             console.log(data)
-            
-     /*        window.location.reload() */
-          
         })
         .catch((err) => {
-    
+              console.log(err)
         });
+
+
+
+        StationsService.updateIncidentState({"incident":{"state": "Leida"}},incident_id)
+        .then((data) => {
+
+  
+             setresponseAdminIncident(true) /* Para actualizar las incidencias ya respondidas */
+                  
+        })
+        .catch((err) => {
+          console.log(err)
+        }); 
     },
     []
   );
 
 
 
+  
+
+/* Actualizar el estado de la notificacion (leida o no leida) */
+
   const notificationUpdatestate = useCallback((notification_id) => {
     
        StationsService.updateNotificationState({notification:{"state": "Leída"}},notification_id)
         .then((data) => {
  
-          setChecked(true)/* Para actualizar notificiones leidas sin recargar página */
+          setChecked(true) /* Para actualizar notificiones leidas sin recargar página */
                   
         })
         .catch((err) => {

@@ -148,7 +148,7 @@ class StationUpdateStateAPIView(generics.UpdateAPIView):
 
 class ListCreateIncidentAPIView(generics.ListCreateAPIView):
 
-    queryset = Incident.objects.all()
+    queryset = Incident.objects.filter(state="No Leida")
     serializer_class = IncidentSerializer
     permission_classes = (IsAuthenticated,)
 
@@ -185,3 +185,34 @@ class ListCreateIncidentAPIView(generics.ListCreateAPIView):
         serializer.save()
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class IncidentUpdateStateAPIView(generics.UpdateAPIView):
+
+
+    permission_classes = (IsAuthenticated,)
+    serializer_class = IncidentSerializer
+
+
+    def update(self,request,idIncident):
+        print(idIncident)
+        print(request.data)
+        serializer_context = {'request': request}
+
+        try:
+            serializer_instance = Incident.objects.get(id=idIncident)
+        except Incident.DoesNotExist:
+            raise NotFound('No existe una incidencia con ese ID')
+            
+        serializer_data = request.data.get('incident', {})
+        print(serializer_data)
+        serializer = self.serializer_class(
+            serializer_instance, 
+            context=serializer_context,
+            data=serializer_data, 
+            partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response(serializer.data, status=status.HTTP_200_OK)

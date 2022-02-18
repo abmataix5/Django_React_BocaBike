@@ -37,15 +37,14 @@ export default function ManageIncidents() {
                             <div className="card text-dark">
                                 <div className="card-body p-4 mt-5">
                             
-                                {incidents.map((incident,index) =>
-                
-                                    <Listincidents key={index}  incident={incident} />
-              
-                                )}
-                                
-                         
                             
+                                    {incidents.map((incident,index) =>
+                    
+                                        <Listincidents key={index}  incident={incident} />
                 
+                                    )}
+                                
+        
                                 </div>
                             </div>
                         </div>

@@ -47,9 +47,14 @@ const StationsService = {
     },
 
     updateNotificationState(info,notification_id) { 
-console.log(info)
-console.log(notification_id)
+
         return ApiService().put(`notifications/updateState/${notification_id}/`,info);
+    },
+    
+    updateIncidentState(info,incident_id) { 
+console.log(info)
+console.log(incident_id)
+        return ApiService().put(`stations/incidentUpdate/${incident_id}/`,info);
     },
     
 

@@ -65,6 +65,7 @@ class IncidentSerializer(serializers.ModelSerializer):
             'user',
             'station',
             'text',
+            'state',
             'created_at'
        
         )
