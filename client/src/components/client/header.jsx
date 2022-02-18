@@ -18,15 +18,7 @@ export default function Header () {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
  
-  const {notificationUpdatestate} =  useIncidents();
-
-  const handleSubmit = (e) => {
-
-  
-    notificationUpdatestate(notifications)
-    setShow(false)
-  };
-
+ 
 
     return (
 
@@ -100,26 +92,26 @@ export default function Header () {
                         
                       </button>
 
-                            
-                    <Modal show={show} onHide={handleClose}>
-                        <Modal.Header closeButton>
-                          <Modal.Title>Tus notificaciones</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
+                              
+                      <Modal show={show} onHide={handleClose}>
+                          <Modal.Header closeButton>
+                            <Modal.Title>Tus notificaciones</Modal.Title>
+                          </Modal.Header>
+                          <Modal.Body>
 
-                          {notifications.map((notification,index) =>
-                                        
-                            <ListNotification key={index} notification= {notification}/>
+                            {notifications.map((notification,index) =>
+                                          
+                              <ListNotification key={index} notification= {notification}/>
 
-                          )}
+                            )}
 
-                        </Modal.Body>
-                        <Modal.Footer>
-                          <Button variant="secondary" onClick={handleSubmit}>
-                            Cerrar
-                          </Button>
-                        </Modal.Footer>
-                    </Modal>
+                          </Modal.Body>
+                          <Modal.Footer>
+                            <Button variant="secondary" onClick={handleClose}>
+                              Cerrar
+                            </Button>
+                          </Modal.Footer>
+                      </Modal>
 
                       <ul className="navbar-nav">
 

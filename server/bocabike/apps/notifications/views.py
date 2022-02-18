@@ -66,21 +66,18 @@ class NotificationUpdateStateAPIView(generics.UpdateAPIView):
     serializer_class = NotificationSerializer
 
 
-
-    def update(self,request):
-        
+    def update(self,request,idNotification):
+        print(idNotification)
         print(request.data)
-        
-        """ print(request.data)
         serializer_context = {'request': request}
 
         try:
-            serializer_instance = Notification.objects.get()
+            serializer_instance = Notification.objects.get(id=idNotification)
         except Notification.DoesNotExist:
             raise NotFound('No existe una estación con ese ID')
             
         serializer_data = request.data.get('notification', {})
-       
+        print(serializer_data)
         serializer = self.serializer_class(
             serializer_instance, 
             context=serializer_context,
@@ -88,4 +85,6 @@ class NotificationUpdateStateAPIView(generics.UpdateAPIView):
             partial=True
         )
         serializer.is_valid(raise_exception=True)
-        serializer.save() """
+        serializer.save()
+
+        return Response(serializer.data, status=status.HTTP_200_OK)

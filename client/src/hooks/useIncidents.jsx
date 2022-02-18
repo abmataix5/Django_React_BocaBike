@@ -8,7 +8,7 @@ export function useIncidents () {
   
 
 
-  const {incidents, setIncidents} = useContext(IncidentsContext)
+  const {incidents, setIncidents,checked,setChecked} = useContext(IncidentsContext)
 
 
   useEffect(function () {
@@ -46,8 +46,8 @@ export function useIncidents () {
   /* Respuesta del administrador a la incidencia de un usuario */
 
 
-  const adminResponse = useCallback(
-    (incident_id, textNotification) => {
+  const adminResponse = useCallback((incident_id, textNotification) => {
+
 
       StationsService.createNotification({"incident": incident_id,"text":textNotification})
         .then((data) => {
@@ -66,17 +66,16 @@ export function useIncidents () {
 
 
 
-  const notificationUpdatestate = useCallback(
-    (notications) => {
-console.log(notications)
-       StationsService.updateNotificationState(notications)
+  const notificationUpdatestate = useCallback((notification_id) => {
+    
+       StationsService.updateNotificationState({notification:{"state": "Leída"}},notification_id)
         .then((data) => {
  
-            console.log(data)
+          setChecked(true)/* Para actualizar notificiones leidas sin recargar página */
                   
         })
         .catch((err) => {
-    
+          console.log(err)
         }); 
     },
     []

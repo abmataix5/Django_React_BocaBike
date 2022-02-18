@@ -6,10 +6,11 @@ export function IncidentsContextProvider ({children}) {
   
   const [incidents, setIncidents] = useState([])
   const [notifications, setNotifications] = useState([])
-
+  const [checked,setChecked] = useState(false)
 
  useEffect(function () {
     
+    setChecked(false) /* Para actualizar notificiones leidas sin recargar página */
 
     StationsService.getNotifications()
       .then(notification => {
@@ -17,10 +18,10 @@ export function IncidentsContextProvider ({children}) {
         setNotifications(notification.data)
         
       })
-  }, [setNotifications])
+  }, [setNotifications,checked])
 
 
-  return <Context.Provider value={{incidents, setIncidents,notifications,setNotifications}}>
+  return <Context.Provider value={{incidents, setIncidents,notifications,setNotifications,checked,setChecked}}>
     {children}
   </Context.Provider>
 }
