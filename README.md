@@ -21,7 +21,7 @@ Aplicacion web destinada a la adminnistración de alquileres de bicicletas elect
 
  * SERVIDOR
 
-     * [Django](https://www.djangoproject.com/)
+     * [Django -  V1.17.3](https://www.djangoproject.com/)
 
     
         * Middleware JWT
@@ -40,7 +40,7 @@ Aplicacion web destinada a la adminnistración de alquileres de bicicletas elect
  
 * CLIENTE
 
-    * [React](https://es.reactjs.org/)
+    * [React - v17.0.2](https://es.reactjs.org/)
 
         * Hooks
         * Routing 
