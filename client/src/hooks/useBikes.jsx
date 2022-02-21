@@ -40,7 +40,7 @@ export function useBikes () {
       
   },
   []
-);
+  );
 
   return { bikes,loading,loadingNextPage,deleteBike}
 }
