@@ -6,7 +6,7 @@ import { useStats } from "../../hooks/useStats";
 
 export default function Dashboard() {
 
-  const {statsRentStation} = useStats();
+  const {statsRentStation,statsRentBike,statsRentUser} = useStats();
  
     return (
 
@@ -26,7 +26,7 @@ export default function Dashboard() {
         <table className="table table-striped table-sm">
           <thead>
             <tr>
-              <th className="col">#</th>
+              <th className="col">ID</th>
               <th className="col">Nombre de la estación</th>
               <th className="col">Número de reservas totales</th>
             </tr>
@@ -47,49 +47,49 @@ export default function Dashboard() {
 
 
 
-      <h2>Bicis con más alquileres</h2>
+      <h2>Top 5 bicis más usadas</h2>
       <div className="table-responsive">
         <table className="table table-striped table-sm">
           <thead>
             <tr>
-              <th className="col">#</th>
-              <th className="col">Nombre de la estación</th>
+              <th className="col">ID</th>
+              <th className="col">Numero de la bici</th>
               <th className="col">Número de reservas totales</th>
             </tr>
           </thead>
           <tbody>
 
               
-            {statsRentStation.map((stat,index) =>
+            {statsRentBike.map((stat,index) =>
                     
                     <ListStats key={index}  stat={stat} />
                   
             )}
-      
+       
       
       
           </tbody>
         </table>
       </div>
 
-      <h2>Usuario con más alquileres</h2>
+      <h2>Top 5 usuarios más activos</h2>
       <div className="table-responsive">
         <table className="table table-striped table-sm">
           <thead>
             <tr>
-              <th className="col">#</th>
-              <th className="col">Nombre de la estación</th>
+              <th className="col">ID</th>
+              <th className="col">Nombre del usuario</th>
               <th className="col">Número de reservas totales</th>
             </tr>
           </thead>
           <tbody>
 
                 
-          {statsRentStation.map((stat,index) =>
+           {statsRentUser.map((stat,index) =>
                   
                   <ListStats key={index}  stat={stat} />
                 
-          )}
+          )} 
 
       
           </tbody>

@@ -14,7 +14,7 @@ export default function NavDashboard () {
 
           <ul className="nav flex-column text-white">
             <li className="nav-item">
-             <Link to={'/dashboard'} className="nav-link active text-white">Dashboard</Link>
+             <Link to={'/dashboard'} className="nav-link active text-white">Estadisticas</Link>
             </li>
             <li className="nav-item mt-4">
               <Link to={'/manageBikes'} className="nav-link active text-white">Administrar Bicicletas</Link>

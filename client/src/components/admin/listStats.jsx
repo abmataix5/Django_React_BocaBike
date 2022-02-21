@@ -14,7 +14,7 @@ export default function ListStats ({stat}) {
             <tr>
 
               <td>{stat.id}</td>
-              <td>{stat.name_station}</td>
+              <td>{stat.name_stat}</td>
               <td>{stat.rents}</td>
              
             </tr>

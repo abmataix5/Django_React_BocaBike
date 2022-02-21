@@ -19,11 +19,9 @@ class RentView(generics.ListCreateAPIView):
 
     def list(self, request):
 
-        serializer_context = {
-            'user': request.user.profile.id
-        }
+        
 
-        serializer = RentSerializer.GetStatsMoreStationRent(context=serializer_context)
+        serializer = RentSerializer.GetStatsMoreStationRent()
 
         return Response(serializer, status=status.HTTP_200_OK)
 
@@ -67,3 +65,34 @@ class RentsDestroyAPIView(generics.DestroyAPIView):
         succes_messsage =  'Reserva eliminada con éxito'
 
         return Response(succes_messsage, status=status.HTTP_204_NO_CONTENT)
+
+
+
+class RentBikeStatsView(generics.ListAPIView):
+
+    serializer_class = RentSerializer
+    permission_classes = (IsAuthenticated,)
+
+
+
+    def list(self, request):
+
+    
+        serializer = RentSerializer.GetStatsMoreBikeRent()
+
+        return Response(serializer, status=status.HTTP_200_OK)
+
+
+class RentuserStatsView(generics.ListAPIView):
+
+    serializer_class = RentSerializer
+    permission_classes = (IsAuthenticated,)
+
+
+
+    def list(self, request):
+
+    
+        serializer = RentSerializer.GetStatsMoreUserRent()
+
+        return Response(serializer, status=status.HTTP_200_OK)

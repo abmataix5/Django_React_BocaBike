@@ -25,24 +25,72 @@ class RentSerializer(serializers.ModelSerializer):
         )
         model = Rent
 
-    def to_stats(instance):
+
+    def to_stats_stations(instance):
         return {
             'id': instance.id,
             'rents': instance.rents,
-            'name_station': instance.name_station
+            'name_stat': instance.name_stat
         }
     
 
-    def GetStatsMoreStationRent(context):
+    def GetStatsMoreStationRent():
 
-        user = str(context['user'])
-       
-        queryset = Rent.objects.raw("SELECT stations_station.name as name_station,rents_rent.station_id as id, COUNT(*) as rents FROM rents_rent,stations_station where rents_rent.station_id = stations_station.id GROUP BY rents_rent.station_id ORDER BY rents DESC")
+        
+        queryset = Rent.objects.raw("SELECT stations_station.name as name_stat,rents_rent.station_id as id, COUNT(*) as rents FROM rents_rent,stations_station where rents_rent.station_id = stations_station.id GROUP BY rents_rent.station_id ORDER BY rents DESC")
             
         serialized_stats = []
-        print(queryset.iterator())
+       
         for stat in queryset.iterator():
-            stats_s = RentSerializer.to_stats(stat)
+            stats_s = RentSerializer.to_stats_stations(stat)
+            serialized_stats.append(stats_s)
+
+        return serialized_stats
+
+
+
+
+    def to_stats_bikes(instance):
+        return {
+            'id': instance.id,
+            'rents': instance.rents,
+            'name_stat': instance.id
+        }
+    
+
+    def GetStatsMoreBikeRent():
+
+       
+       
+        queryset = Rent.objects.raw("SELECT rents_rent.bike_id as id, COUNT(*) as rents FROM rents_rent GROUP BY rents_rent.bike_id ORDER BY rents DESC LIMIT 5")
+            
+        serialized_stats = []
+ 
+        for stat in queryset.iterator():
+            stats_s = RentSerializer.to_stats_bikes(stat)
+            serialized_stats.append(stats_s)
+
+        return serialized_stats
+
+
+    def to_stats_user(instance):
+        return {
+            'id': instance.id,
+            'rents': instance.rents,
+            'name_stat': instance.name_stat
+        }
+    
+
+    def GetStatsMoreUserRent():
+
+       
+       
+        queryset = Rent.objects.raw("SELECT authentication_user.username as name_stat,rents_rent.user_id as id, COUNT(*) as rents FROM rents_rent,authentication_user where rents_rent.user_id = authentication_user.id GROUP BY rents_rent.user_id ORDER BY rents DESC")
+            
+        serialized_stats = []
+ 
+        for stat in queryset.iterator():
+            stats_s = RentSerializer.to_stats_user(stat)
             serialized_stats.append(stats_s)
 
         return serialized_stats

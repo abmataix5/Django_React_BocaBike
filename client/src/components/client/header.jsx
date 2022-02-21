@@ -50,7 +50,7 @@ export default function Header () {
                   <Link to={'/'} className="nav-link px-3 me-2 text-white">Home</Link>
                   </li>
                   <li className="nav-item ">
-                  <Link to={'/dashboard'} className="nav-link px-3 me-2 text-white">Dashboard</Link>
+                  <Link to={'/dashboard'} className="nav-link px-3 me-2 text-white">Panel de administración</Link>
                   </li>
                 </>
                 :

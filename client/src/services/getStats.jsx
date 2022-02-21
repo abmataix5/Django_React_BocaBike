@@ -6,6 +6,17 @@ const StatsService = {
     
         return ApiService().get(`rent/`);
     },
+
+    getStatsRentsBikes() {
+    
+        return ApiService().get(`rent/bikeStats`);
+    },
+
+    getStatsRentsUsers() {
+    
+        return ApiService().get(`rent/userStats`);
+    },
+  
   
 
 }
