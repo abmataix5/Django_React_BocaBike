@@ -1,14 +1,9 @@
+# APP BocaBike 📋
 
 
+Tercer proyecto del curso 2n Desarrollo de aplicaciones web.
 
-
-
-# APP MyPadel 📋
-
-
-Segundo proyecto del curso 2n Desarrollo de aplicaciones web.
-
-Aplicacion web destinada a la adminnistración de un club de padel
+Aplicacion web destinada a la adminnistración de alquileres de bicicletas electricas de una ciudad.
 
 
 
@@ -20,7 +15,7 @@ Aplicacion web destinada a la adminnistración de un club de padel
 
  * SERVIDOR
 
-     * [Go](https://es.wikipedia.org/wiki/Go_(lenguaje_de_programaci%C3%B3n))
+     * [Django](https://www.djangoproject.com/)
 
         * Midedlewares Admin
         * Midedlewares Auth
@@ -33,21 +28,12 @@ Aplicacion web destinada a la adminnistración de un club de padel
         * Module
         * SendGrid GO
 
- * [Laravel](https://es.wikipedia.org/wiki/Go_(lenguaje_de_programaci%C3%B3n))
-        
-        * Resources
-        * Requests
-        * Repositories
-        * Token JWT
-        * Routes
-        * Traits
-        * Helper (FileUpload)
        
  
  
 * CLIENTE
 
-    * [Vue3](https://vue.io/)
+    * [React](https://es.reactjs.org/)
 
         * Store modularizado 
         * Componentes 
@@ -69,10 +55,10 @@ Aplicacion web destinada a la adminnistración de un club de padel
 ### Modulos de la app 🔩
 
 
-* *Login* 
-* *Workers List*
-* *Courts List*
-* *Courts List*
+* *Login/Register* 
+* *Estaciones*
+* *Details estaciones*
+* *Pandel admin*
 
 
 ### Funcionalidad ⚙️
@@ -83,36 +69,37 @@ Aplicacion web destinada a la adminnistración de un club de padel
         <th>Características</th>
     </tr>
     <tr>
-        <td>Login</td>
+        <td>Login/Register</td>
         <td>
             <ul>
-              Modulo de login, valida si el usuario que incia sesión es un administrador o un trabajador, dependiendo el servidor se encarga de conceder permisos para relizar diferentes acciones dentro de la app.
+              Modulo de login/register, con validacion de errores con react-hook-forms y JWT.
             </ul>
         </td>
     </tr>
     <tr>
-        <td>Worker List</td>
+        <td>Estaciones</td>
         <td>
             <ul>
-                <li>WorkerItem>> Componente que nos muestran el listado de trabajadores con su información correspondiente, tembien permite al administrador editar o borrar trabajadores</li>
-                <li>Añadir trabajador >> Permite al administrador añadir trabajadores, concederles permisos de admin, cuenta con validacion mediante Vuelidate, al dar de alta a un trabajador, se le notifica automatiamente con un correo mendiane SendGrid</li>
+          Módulo que no permite ver un listado de todas las estaciones disponibles en la ciudad y si esta o no en servicio.
             </ul>
         </td>
     </tr>
      <tr>
-        <td>Courts List</td>
+        <td>Details estaciones</td>
         <td>
             <ul>
-                <li>CourtItem>> Componente que nos muestran el listado de las pistas creadas, con su información correspondiente, tembien permite al administrador editar o borrar pistas</li>
+              Este módulo nos permite ver información mas detallada de una esatción, donde podemos crear incidencias sobre ella, alquilar bicicletas y dejar una bicicleta alquilada en un slot libre.
             </ul>
         </td>
     </tr>
     <tr>
-        <td>Partners List</td>
+        <td>Panel Admin</td>
         <td>
             <ul>
-                <li>PartnerItem>> Componente que nos muestran el listado de socios con su información correspondiente, tembien permite al administrador editar o borrar socios</li>
-                <li>Añadir Socio >> Ademas de agregar los datos del usuario, nos permite asociar a su perfil, una imagen seleccionada. </li>
+                <li>Estadicsticas>>Muestra estadisticas de la aplicación como: Top 5 esatciones más usadas, top 5 bicis más usadas, top 5 usuarios más activos</li>
+                <li>Administrar bicis >> Permite administrar las bicis </li>
+                <li>Administrar estaciones >> Permite habilitar o deshabitlitar estaciones </li>
+                <li>Administrar incidencias >> Lista todas las incidencias creadas por los usuarios, y permite al administrador contestar las incidencias.</li>
             </ul>
         </td>
     </tr>
@@ -133,5 +120,5 @@ Aplicacion web destinada a la adminnistración de un club de padel
 
 * *Abel Mataix * - [abmataix5](https://github.com/abmataix5/)
 
-* *Hugo Micó  * - [hachemico](https://github.com/hachemico/)
+
 
