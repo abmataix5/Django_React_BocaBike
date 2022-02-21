@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Bike
 from .serializers import BikeSerializer
+from bocabike.apps.core.permissions import IsStaff
 
 
 class ListBike(generics.ListAPIView):
@@ -23,7 +24,46 @@ class ListBike(generics.ListAPIView):
             'bikes': serializer.data
         }, status=status.HTTP_200_OK)
 
-""" 
-class DetailBike(generics.RetrieveUpdateDestroyAPIView):
+
+
+class DeleteUpdateBikes(APIView):
+
     queryset = Bike.objects.all()
-    serializer_class = BikeSerializer """
+    pagination_class = None
+    permission_classes = (IsStaff,)
+    serializer_class = BikeSerializer
+
+  
+
+    def delete(self, request, id):
+        try:
+            bike = Bike.objects.get(id=id)
+        except Bike.DoesNotExist:
+            return Response('Noe existe bici con esa id', status=404)
+
+        bike.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+
+    def update(self,request,idSlot):
+        print(idSlot)
+        print(request.data)
+        serializer_context = {'request': request}
+
+        try:
+            serializer_instance = Bike.objects.get(id=idSlot)
+        except Bike.DoesNotExist:
+            raise NotFound('No existe una bici con ese ID')
+            
+        serializer_data = request.data.get('bike', {})
+        print(serializer_data)
+        serializer = self.serializer_class(
+            serializer_instance, 
+            context=serializer_context,
+            data=serializer_data, 
+            partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response(serializer.data, status=status.HTTP_200_OK)

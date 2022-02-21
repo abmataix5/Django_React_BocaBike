@@ -8,6 +8,7 @@ from rest_framework.views import APIView
 from .models import Station,Slot,Incident
 from .serializers import IncidentSerializer, StationSerializer,SlotSerializer,StationListDetailSerializer
 from rest_framework.generics import RetrieveAPIView
+from bocabike.apps.core.permissions import IsStaff
 
 class ListStation(generics.ListCreateAPIView):
     queryset = Station.objects.all()
@@ -117,7 +118,7 @@ class SlotRentUpdateAPIView(generics.UpdateAPIView):
 class StationUpdateStateAPIView(generics.UpdateAPIView):
 
 
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsStaff,)
     serializer_class = StationSerializer
 
 
@@ -190,7 +191,7 @@ class ListCreateIncidentAPIView(generics.ListCreateAPIView):
 class IncidentUpdateStateAPIView(generics.UpdateAPIView):
 
 
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsStaff,)
     serializer_class = IncidentSerializer
 
 

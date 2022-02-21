@@ -5,7 +5,7 @@ import BikeItem from './bikeItem';
 
 export default function ListBikesAdmin ({bikes}) {
 
-
+  
   
        return(
         

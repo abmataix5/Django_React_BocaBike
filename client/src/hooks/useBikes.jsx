@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from 'react'
+import {useContext, useEffect, useState,useCallback} from 'react'
 import BikesContext from '../context/BikesContext'
 import BikesService from '../services/getBikes'
 
@@ -23,5 +23,24 @@ export function useBikes () {
       })
   }, [setBikes])
 
-  return { bikes,loading,loadingNextPage}
+
+  const deleteBike = useCallback((id_station) => {
+
+  
+    BikesService.deleteBike(id_station)
+      .then((data) => {
+
+          console.log(data)
+          window.location.reload()
+        
+      })
+      .catch((err) => {
+  
+      });
+      
+  },
+  []
+);
+
+  return { bikes,loading,loadingNextPage,deleteBike}
 }

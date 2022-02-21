@@ -8,12 +8,12 @@ from rest_framework.exceptions import NotFound
 from rest_framework.permissions import (
     AllowAny, IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser
 )
-from  bocabike.apps.core.permissions import IsOwner
 
+from bocabike.apps.core.permissions import IsStaff
 class RentView(generics.ListCreateAPIView):
 
     serializer_class = RentSerializer
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsStaff,)
 
 
 
@@ -51,7 +51,7 @@ class RentView(generics.ListCreateAPIView):
 
 class RentsDestroyAPIView(generics.DestroyAPIView):
  
-    permission_classes = (IsOwner,)
+    permission_classes = (IsStaff,)
   
 
     def destroy(self, request, id=None):
@@ -71,7 +71,7 @@ class RentsDestroyAPIView(generics.DestroyAPIView):
 class RentBikeStatsView(generics.ListAPIView):
 
     serializer_class = RentSerializer
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsStaff,)
 
 
 
@@ -86,7 +86,7 @@ class RentBikeStatsView(generics.ListAPIView):
 class RentuserStatsView(generics.ListAPIView):
 
     serializer_class = RentSerializer
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsStaff,)
 
 
 
