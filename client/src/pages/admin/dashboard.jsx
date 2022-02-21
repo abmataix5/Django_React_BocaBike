@@ -1,6 +1,13 @@
 import React from "react";
 import NavDashboard from "../../components/admin/navDashboard"
-export default function Home() {
+import ListStats from "../../components/admin/listStats"
+import { useStats } from "../../hooks/useStats";
+
+
+export default function Dashboard() {
+
+  const {statsRentStation} = useStats();
+  console.log(statsRentStation)
 
     return (
 
@@ -20,66 +27,53 @@ export default function Home() {
           <thead>
             <tr>
               <th className="col">#</th>
-              <th className="col">Header</th>
-              <th className="col">Header</th>
-              <th className="col">Header</th>
-              <th className="col">Header</th>
+              <th className="col">Nombre de la estación</th>
+              <th className="col">Número de reservas totales</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,002</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,004</td>
-              <td>text</td>
-              <td>random</td>
-              <td>layout</td>
-              <td>dashboard</td>
-            </tr>
-            <tr>
-              <td>1,005</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-              <td>placeholder</td>
-            </tr>
-            <tr>
-              <td>1,006</td>
-              <td>dashboard</td>
-              <td>illustrative</td>
-              <td>rich</td>
-              <td>data</td>
-            </tr>
+
+              
+        {statsRentStation.map((stat,index) =>
+                
+                <ListStats key={index}  stat={stat} />
+              
+            )}
+      
+         {/* <ListStats statsRentStation={statsRentStation}></ListStats> */}
       
           </tbody>
         </table>
       </div>
+
+
+
+      <h2>Bicis con más alquileres</h2>
+      <div className="table-responsive">
+        <table className="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th className="col">#</th>
+              <th className="col">Nombre de la estación</th>
+              <th className="col">Número de reservas totales</th>
+            </tr>
+          </thead>
+          <tbody>
+
+              
+        {statsRentStation.map((stat,index) =>
+                
+                <ListStats key={index}  stat={stat} />
+              
+            )}
+      
+         {/* <ListStats statsRentStation={statsRentStation}></ListStats> */}
+      
+          </tbody>
+        </table>
+      </div>
+
+
     </main>
   </div>
 </div>

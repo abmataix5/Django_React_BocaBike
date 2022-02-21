@@ -1,8 +1,8 @@
 import React from 'react'
-
 import Loading from 'react-simple-loading';
-import { useUser } from '../../hooks/useUser';
 import BikeItem from './bikeItem';
+
+
 export default function ListBikesAdmin ({bikes}) {
 
 console.log(bikes);
