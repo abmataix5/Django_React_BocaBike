@@ -5,37 +5,40 @@ import BikeItem from './bikeItem';
 
 export default function ListBikesAdmin ({bikes}) {
 
-console.log(bikes);
+
   
        return(
         
 
-        (bikes.length === 0) ?<Loading/> :
+        (bikes.length === 0)
+        
+        ?
+        
+        <Loading/> 
+        
+        :
 
         <table className="table table-striped table-product">
-        <tbody>
+            <tbody>
 
-        <tr>
-            <td width="390">Estacion</td>
-            <td width="390">ID Bici</td>
-            <td width="390">Info Bici</td>
-            <td width="390"></td>
-            <td width="390"></td>
-        
-        </tr>    
+                <tr>
+                    <td width="390">Estacion</td>
+                    <td width="390">ID Bici</td>
+                    <td width="390">Info Bici</td>
+                    <td width="390"></td>
+                    <td width="390"></td>
+                
+                </tr>    
 
        
-        {bikes.map((bike,index) =>
-                
-            <BikeItem key={index}  bike={bike} />
-          
-        )}
-  
-      
+                {bikes.map((bike,index) =>
                         
-                                        
-        </tbody>
-    </table>
+                    <BikeItem key={index}  bike={bike} />
+                
+                )}
+                                                            
+            </tbody>
+        </table>
     
      
       ) 

@@ -1,5 +1,4 @@
 import {useContext, useEffect, useState} from 'react'
-import getBikes from '../services/getBikes'
 import BikesContext from '../context/BikesContext'
 import BikesService from '../services/getBikes'
 
@@ -9,7 +8,6 @@ export function useBikes () {
   
   const [loading, setLoading] = useState(false)
   const [loadingNextPage, setLoadingNextPage] = useState(false)
-
   const {bikes, setBikes} = useContext(BikesContext)
 
 

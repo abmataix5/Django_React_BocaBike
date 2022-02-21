@@ -1,8 +1,6 @@
 import UserContext from "../context/UserContext"
 import  RentContext  from "../context/RentsContext";
 import {useContext, useCallback, useState} from 'react'
-import getBikes from '../services/getBikes'
-
 import StationsService from "../services/getStations";
 
 
@@ -29,7 +27,6 @@ export function useRents () {
                 
                 setRentActive(data.data.bike.id)
                 
-             /*    window.location.reload()   */
 
             })
             .catch((err) => {
@@ -73,5 +70,13 @@ export function useRents () {
   ); 
 
 
-  return { rent,rent_remove,loading,loadingNextPage,rentBikeID,rentActive,setRentActive}
+  return { 
+    rent,
+    rent_remove,
+    loading,
+    loadingNextPage,
+    rentBikeID,
+    rentActive,
+    setRentActive
+  }
 }

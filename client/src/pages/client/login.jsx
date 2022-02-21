@@ -12,7 +12,7 @@ export default function Login() {
   const { login, isLogged } = useUser(); 
 
   useEffect(() => {
-    console.log(isLogged);
+  
     if (isLogged) {
 
        history("/"); 

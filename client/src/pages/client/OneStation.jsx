@@ -66,8 +66,7 @@ export default function StationDetail() {
                                 <p>Localización : {station.location} </p>
                                 <p>Slots en funcionamineto : {station.slots.length}</p>
                             
-                                <button className="btn btn-primary btn-rounded">Seguir estación</button>
-                            
+                          
                                 <button className="btn btn-danger btn-rounded" onClick={handleShow}>Reportar incidencia</button>
                             </div>
 
@@ -111,37 +110,37 @@ export default function StationDetail() {
 
 
 
+      {/* Ventana modal para crear incidencias */}
 
+            <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Crear incidencia para la estación : {station.name}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
 
-        <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Crear incidencia para la estación : {station.name}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+            <form>
+          
+                <div className="form-group">
+                    <label htmlFor="formGroupExampleInput2">Escribe aquí la incidencia</label>
+                    <textarea type="textfield" 
+                    className="form-control" 
+                    id="formGroupExampleInput2" 
+                    placeholder="..."  
+                    onChange={(e) => setTextIncident(e.target.value)}
+                    value={textIncident}/>
+                </div>
+          </form>
 
-        <form>
-       
-            <div className="form-group">
-                <label htmlFor="formGroupExampleInput2">Escribe aquí la incidencia</label>
-                <textarea type="textfield" 
-                className="form-control" 
-                id="formGroupExampleInput2" 
-                placeholder="..."  
-                onChange={(e) => setTextIncident(e.target.value)}
-                value={textIncident}/>
-            </div>
-       </form>
-
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
-          <Button variant="primary" onClick={handleClose} onClick={handleSubmit}>
-            Enviar incidencia
-          </Button>
-        </Modal.Footer>
-      </Modal>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Cerrar
+              </Button>
+              <Button variant="primary" onClick={handleClose} onClick={handleSubmit}>
+                Enviar incidencia
+              </Button>
+            </Modal.Footer>
+          </Modal>
 
 
         </>

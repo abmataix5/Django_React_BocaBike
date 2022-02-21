@@ -18,7 +18,7 @@ const StationsService = {
     },
 
     updateSlotRent(slot,id_slot) { 
-        console.log(id_slot)
+       
         return ApiService().put(`stations/slotUpdate/${id_slot}/`,slot);
     },
     disableStation(state_station,id_station) { 
@@ -32,12 +32,12 @@ const StationsService = {
     },
 
     createIncident(incident_info) { 
-        console.log(incident_info)
+     
         return ApiService().post(`stations/incident/`,incident_info);
     },
 
     createNotification(notification_info) { 
-        console.log(notification_info)
+
         return ApiService().post(`notifications/`,notification_info);
     },
 
@@ -52,8 +52,7 @@ const StationsService = {
     },
     
     updateIncidentState(info,incident_id) { 
-console.log(info)
-console.log(incident_id)
+
         return ApiService().put(`stations/incidentUpdate/${incident_id}/`,info);
     },
     

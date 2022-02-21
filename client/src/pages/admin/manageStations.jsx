@@ -2,10 +2,12 @@ import React from "react";
 import NavDashboard from "../../components/admin/navDashboard"
 import ListStationsAdmin from "../../components/admin/listStation";
 import { useStations } from "../../hooks/useStations";
+
+
 export default function ManageStations() {
 
     const {stations} = useStations()
-console.log(stations)
+
     return (
 
   
@@ -22,7 +24,8 @@ console.log(stations)
             <h2>Administrar estaciones</h2>
             <button className="btn btn-success mb-3">Crear nueva estación</button>
             
-            <ListStationsAdmin stations={stations}/>
+                <ListStationsAdmin stations={stations}/>
+
             </main>
         </div>
         </div>

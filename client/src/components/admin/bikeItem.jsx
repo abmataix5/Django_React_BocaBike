@@ -1,11 +1,10 @@
 import React from 'react'
-
 import Loading from 'react-simple-loading';
 import { useUser } from '../../hooks/useUser';
 
 export default function BikeItem ({bike}) {
 
-console.log(bike);
+
   
        return(
         

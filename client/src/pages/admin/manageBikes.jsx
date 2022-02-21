@@ -22,10 +22,7 @@ const {bikes} = useBikes()
             <NavDashboard></NavDashboard>
 
             <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        
-
-        
-
+    
             <h2>Todas nuestra bicis disponibles</h2>
 
                 <ListBikes bikes={bikes}/>

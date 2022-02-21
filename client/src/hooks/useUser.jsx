@@ -1,8 +1,7 @@
-import { useCallback, useContext, useState } from "react"; //evita que se vuelva a ejecutar una funcion
+import { useCallback, useContext, useState } from "react"; 
 import UserContext from "../context/UserContext"
 import LoginService from "../services/login_service";
 import registerService from "../services/register_service"
-import UserService from "../services/getUser";
 import {saveToken,destroyToken,getToken} from '../services/jwt_service'
 
 
@@ -16,8 +15,9 @@ export function useUser() {
 
 
 
-  const login = useCallback(
-    (email, password) => {
+
+  const login = useCallback((email, password) => {
+ 
       setState({ loading: true, error: false, loadingUser: true });
       LoginService.login({ user: { email, password } })
         .then((data) => {
@@ -39,13 +39,13 @@ export function useUser() {
         });
     },
     [setJWT]
-  ); //cada vez que cambie setJWT la funcion login se vuelve a crear
+  ); 
 
 
 
 
-  const register_f = useCallback(
-    (email, password, username) => {
+  const register_f = useCallback((email, password, username) => {
+  
       console.log(username)
       setState({ loading: true, error: false,loadingUser: false });
       registerService.register({ user: { email, password, username } })
@@ -68,6 +68,8 @@ export function useUser() {
     [setJWT]
   ); 
 
+
+
   const check_auth = () => {
     
     if(localStorage.getItem('id_token')){
@@ -75,6 +77,7 @@ export function useUser() {
     }
     return false
   }
+
 
 
   const check_admin = () => {
@@ -89,13 +92,19 @@ export function useUser() {
 
 
   const logout = useCallback(() => {
+
     localStorage.clear()
     destroyToken()
-    window.location.reload()
+    window.location.href = "http://localhost:3000/";
+
   }, [setJWT]);
 
+
+
   const saveUser = (user) => {
+
     setUser(user);
+    
   }
 
 

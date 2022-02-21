@@ -103,5 +103,11 @@ export function useIncidents () {
 
 
 
-  return { incidents,setIncidents,createIncident,adminResponse,notificationUpdatestate}
+  return { 
+    incidents,
+    setIncidents,
+    createIncident,
+    adminResponse,
+    notificationUpdatestate
+  }
 }

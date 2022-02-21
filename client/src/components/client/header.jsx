@@ -11,10 +11,8 @@ export default function Header () {
 
   const {isLogged,logout,user,isAdminLogged} = useUser();
 
-
   const {notifications} = useContext(IncidentsContext)
   const headerAdmin = localStorage.getItem('isAdmin') 
-
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -124,19 +122,16 @@ export default function Header () {
                           :
 
                             <ul className="navbar-nav">
-
                               <li className="nav-item dropdown text-white">
-                                
-                                <img
-                                  src={"https://i.pravatar.cc/150?u=" + user.username}
-                                  className="rounded-circle m-3"
-                                  height="42"
-                                  alt="Portrait of a Woman"
-                                  loading="lazy"
-                                />
-                                 {user.username} 
-                              </li>
-                                
+                                  <img
+                                    src={"https://i.pravatar.cc/150?u=" + user.username}
+                                    className="rounded-circle m-3"
+                                    height="42"
+                                    alt="Portrait of a Woman"
+                                    loading="lazy"
+                                  />
+                                  {user.username} 
+                              </li> 
                            </ul>
                       }
 
@@ -153,6 +148,7 @@ export default function Header () {
                   <Link to={'/register'} className="btn btn-danger me-3">Registrate gratis</Link>
               
                 </>
+
               }
               
             

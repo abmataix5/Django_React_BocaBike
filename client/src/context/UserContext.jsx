@@ -7,34 +7,30 @@ const Context = React.createContext({});
 export function UserContextProvider({ children }) {
   
 
-    // funcion que intenta obtener su propio usuario con ese token (sirve para detectar tokens invalidos o expirados)
-    
+   
   const check_auth = () => {
        if (getToken()) {
        
     
          UserService.getUserData()
         .then(( data ) => {
-         console.log(data.data)
+    
          localStorage.setItem('isAdmin',data.data.user.is_staff)
           setUser(data.data.user)
       
           setJWT(data.data.user.token)
         })
         .catch(({ response }) => {
-          console.log(response)
+            console.log(response)
             destroyToken();
-          window.location.reload(); 
+            window.location.reload(); 
           }); 
       } else {
         destroyToken();
       } 
     } 
 
-    // por defecto se obtiene del localStorage (comprobando el login) le asignamos una funcion por si se vuelve a renderizar.
-    const [jwt, setJWT] = useState(() => check_auth());
-
-
+  const [jwt, setJWT] = useState(() => check_auth());
   const [user, setUser] = useState(null)
   const [admin, setAdmin] = useState(null)
 

@@ -7,9 +7,8 @@ import StationsContext from '../context/StationsContext'
 export function useStations () {
   
   const [loading, setLoading] = useState(false)
-
-
   const {stations, setStations} = useContext(StationsContext)
+
 
 
   useEffect(function () {
@@ -26,9 +25,9 @@ export function useStations () {
 
 
 
-  const disableStation = useCallback(
-    (id_station, state_station) => {
+  const disableStation = useCallback((id_station, state_station) => {
 
+  
       StationsService.disableStation({station:{"state_station": state_station}},id_station)
         .then((data) => {
  
@@ -39,6 +38,7 @@ export function useStations () {
         .catch((err) => {
     
         });
+        
     },
     []
   );

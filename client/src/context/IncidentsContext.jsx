@@ -8,6 +8,7 @@ export function IncidentsContextProvider ({children}) {
   const [notifications, setNotifications] = useState([])
   const [checked,setChecked] = useState(false)
   const [responseAdminIncident,setresponseAdminIncident] = useState(false)
+  
 
  useEffect(function () {
     
@@ -16,10 +17,10 @@ export function IncidentsContextProvider ({children}) {
     StationsService.getNotifications()
       .then(notification => {
         
-        console.log(notification.data)
         setNotifications(notification.data)
         
       })
+      
   }, [setNotifications,checked])
 
 

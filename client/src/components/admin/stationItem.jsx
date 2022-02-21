@@ -1,13 +1,10 @@
 import React from 'react'
-
 import { useStations } from '../../hooks/useStations';
 
 
 export default function StationItem ({station}) {
 
-    const {  disableStation } = useStations() 
-
-
+    const {disableStation} = useStations() 
 
     const disable = () => {
 
@@ -21,7 +18,7 @@ export default function StationItem ({station}) {
  
      };
   
-       return(
+    return(
         
 
         <tr>

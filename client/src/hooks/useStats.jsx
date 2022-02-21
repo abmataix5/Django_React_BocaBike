@@ -56,5 +56,12 @@ export function useStats () {
 
 
 
-  return { statsRentStation,setRentStationStats,setRentBikeStats,statsRentBike,setRentUserStats,statsRentUser}
+  return { 
+    statsRentStation,
+    setRentStationStats,
+    setRentBikeStats,
+    statsRentBike,
+    setRentUserStats,
+    statsRentUser
+  }
 }

@@ -1,7 +1,6 @@
 import {useState, useEffect,useCallback, useContext} from 'react'
 import { useStations } from "../hooks/useStations";
 import StationsService from '../services/getStations'
-import { useRents } from './useRent';
 import  RentContext  from '../context/RentsContext';
 
 export  function useSingleStation ({ name }) {
@@ -19,7 +18,7 @@ export  function useSingleStation ({ name }) {
       setIsLoading(true)
       StationsService.getOneStation({ name })
         .then(station => {
-console.log(station)
+
           setStation(station.data.results[0])
           setIsLoading(false)
           setIsError(false)
@@ -28,7 +27,7 @@ console.log(station)
           setIsError(true)
         })
     
-    console.log('oaos')
+
   }, [rentActive])
 
 
