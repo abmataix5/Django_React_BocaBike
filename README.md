@@ -7,7 +7,8 @@ Aplicacion web destinada a la adminnistración de alquileres de bicicletas elect
 
 
 ## Imagenes de la APP 🛠️
- file:///home/abel/Im%C3%A1genes/APP/Captura%20de%20pantalla%20de%202022-02-21%2019-36-43.png
+
+file:///home/abel/Im%C3%A1genes/APP/Captura%20de%20pantalla%20de%202022-02-21%2019-36-43.png
 
 file:///home/abel/Im%C3%A1genes/APP/Captura%20de%20pantalla%20de%202022-02-21%2019-36-58.png
 
