@@ -64,6 +64,7 @@ Aplicacion web destinada a la adminnistración de alquileres de bicicletas elect
 * *Estaciones*
 * *Details estaciones*
 * *Pandel admin*
+* *Sistema de notificaciones*
 
 
 ### Funcionalidad ⚙️
