@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Header from "./components/client/header"
+import Footer from "./components/client/footer"
 import {BikesContextProvider} from "./context/BikesContext"
 import {StationsContextProvider} from "./context/StationsContext"
 import {UserContextProvider} from "./context/UserContext"
@@ -39,11 +40,12 @@ function App() {
         <BrowserRouter>
 
         <RentsContextProvider>
-            <StationsContextProvider>
-              <BikesContextProvider>
-                  <IncidentsContextProvider>
-                     <UserContextProvider>
-                     <Header/>
+        <StationsContextProvider>
+        <BikesContextProvider>
+        <IncidentsContextProvider>
+        <UserContextProvider>
+
+          <Header/>
 
                       <Routes>
                         <Route exact path='/' element={<HomePage/>}/>
@@ -58,11 +60,12 @@ function App() {
                         <Route exact path='/manageIncidents' element={<ManageIncidents/>}/> 
                     
                       </Routes>
+
+                  
                     
-                      </UserContextProvider>
-                  </IncidentsContextProvider>
-                
-              </BikesContextProvider>
+            </UserContextProvider>
+            </IncidentsContextProvider>
+            </BikesContextProvider>
             </StationsContextProvider>
             </RentsContextProvider>
          

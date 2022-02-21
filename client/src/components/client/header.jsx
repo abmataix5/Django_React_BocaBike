@@ -10,8 +10,9 @@ export default function Header () {
 
 
   const {isLogged,logout,user,isAdminLogged} = useUser();
+
+
   const {notifications} = useContext(IncidentsContext)
- 
   const headerAdmin = localStorage.getItem('isAdmin') 
 
 
