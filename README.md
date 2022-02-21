@@ -8,8 +8,13 @@ Aplicacion web destinada a la adminnistración de alquileres de bicicletas elect
 
 ## Imagenes de la APP 🛠️
 
+### Panel Admin
+
 ![Image text](https://github.com/abmataix5/Django_React_BocaBike/blob/main/imagenes_readme/Captura%20de%20pantalla%20de%202022-02-21%2019-36-43.png)
 
+### Alquileres 
+
+![Image text](https://github.com/abmataix5/Django_React_BocaBike/blob/main/imagenes_readme/Captura%20de%20pantalla%20de%202022-02-21%2019-36-58.png)
 
 ## Construido con 🛠️
 
