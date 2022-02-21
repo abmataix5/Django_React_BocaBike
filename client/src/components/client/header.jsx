@@ -5,6 +5,7 @@ import  IncidentsContext  from '../../context/IncidentsContext';
 import { Button ,Modal} from 'react-bootstrap';
 import ListNotification from './listNotification';
 import { useIncidents } from '../../hooks/useIncidents';
+import Loading from 'react-simple-loading';
 export default function Header () {
 
 
@@ -113,24 +114,32 @@ export default function Header () {
                           </Modal.Footer>
                       </Modal>
 
-                      <ul className="navbar-nav">
+                      {
 
-                        <li className="nav-item dropdown">
-                       
-                            <img
-                              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp"
-                              className="rounded-circle m-3"
-                              height="42"
-                              alt="Portrait of a Woman"
-                              loading="lazy"
-                            />
-
+                          user === null 
                           
-                        </li>
-                      
-                      </ul>
+                          ? <Loading></Loading>
+                          
+                          :
 
-                    <button  className="btn btn-danger px-3 me-2" onClick={logout}>CheckOut</button>
+                            <ul className="navbar-nav">
+
+                              <li className="nav-item dropdown text-white">
+                                
+                                <img
+                                  src={"https://i.pravatar.cc/150?u=" + user.username}
+                                  className="rounded-circle m-3"
+                                  height="42"
+                                  alt="Portrait of a Woman"
+                                  loading="lazy"
+                                />
+                                 {user.username} 
+                              </li>
+                                
+                           </ul>
+                      }
+
+                    <button  className="btn btn-danger px-3 me-2 m-3" onClick={logout}>CheckOut</button>
                     
                   
                 </>

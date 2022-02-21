@@ -11,6 +11,7 @@ export default function NavDashboard () {
 
         <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-dark  sidebar collapse">
         <div className="position-sticky pt-3 ">
+
           <ul className="nav flex-column text-white">
             <li className="nav-item">
              <Link to={'/dashboard'} className="nav-link active text-white">Dashboard</Link>
@@ -22,16 +23,9 @@ export default function NavDashboard () {
              <Link to={'/manageStations'} className="nav-link active text-white">Administrar Estaciones</Link>
             </li>
             <li className="nav-item  mt-4">
-             <Link to={'/manageUsers'} className="nav-link active text-white">Administrar Usuarios</Link>
-            </li>
-            <li className="nav-item  mt-4">
               <Link to={'/manageIncidents'} className="nav-link active text-white">Administrar Incidencias</Link>
             </li>
-           
           </ul>
-  
-       
-       
         </div>
       </nav>
 

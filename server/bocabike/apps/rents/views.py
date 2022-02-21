@@ -15,6 +15,18 @@ class RentView(generics.ListCreateAPIView):
     serializer_class = RentSerializer
     permission_classes = (IsAuthenticated,)
 
+
+
+    def list(self, request):
+
+        serializer_context = {
+            'user': request.user.profile.id
+        }
+
+        serializer = RentSerializer.GetStatsMoreStationRent(context=serializer_context)
+
+        return Response(serializer, status=status.HTTP_200_OK)
+
     def create(self, request):
     
     

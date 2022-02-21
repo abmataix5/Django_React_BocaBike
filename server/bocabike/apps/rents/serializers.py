@@ -24,6 +24,28 @@ class RentSerializer(serializers.ModelSerializer):
        
         )
         model = Rent
+
+    def to_stats(instance):
+        return {
+            'id': instance.id,
+            'rents': instance.rents,
+            'name_station': instance.name_station
+        }
+    
+
+    def GetStatsMoreStationRent(context):
+
+        user = str(context['user'])
+       
+        queryset = Rent.objects.raw("SELECT stations_station.name as name_station,rents_rent.station_id as id, COUNT(*) as rents FROM rents_rent,stations_station where rents_rent.station_id = stations_station.id GROUP BY rents_rent.station_id ORDER BY rents DESC")
+            
+        serialized_stats = []
+        print(queryset.iterator())
+        for stat in queryset.iterator():
+            stats_s = RentSerializer.to_stats(stat)
+            serialized_stats.append(stats_s)
+
+        return serialized_stats
        
 
     def create(self, validated_data):
