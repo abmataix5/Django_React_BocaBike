@@ -17,16 +17,17 @@ Aplicacion web destinada a la adminnistración de alquileres de bicicletas elect
 
      * [Django](https://www.djangoproject.com/)
 
-        * Midedlewares Admin
-        * Midedlewares Auth
+    
         * Middleware JWT
-        * UUID
         * Serializers
-        * Validators
+        * Permissions
         * Token JWT
+        * Serializers
         * Routes
-        * Module
-        * SendGrid GO
+        * Models
+        * Views
+        * Foreign Keys
+        * ...
 
        
  
@@ -35,14 +36,12 @@ Aplicacion web destinada a la adminnistración de alquileres de bicicletas elect
 
     * [React](https://es.reactjs.org/)
 
-        * Store modularizado 
-        * Componentes 
-        * Api Services Go/Laravel 
-        * AuthGUard
-        * Headers Authentication -> Token , Admin
-        * Reactive
-        * Computed
-        * Setup()
+        * Hooks
+        * Routing 
+        * Api Services 
+        * UseContext / UseState / UseEffect / UseCallback
+        * Components
+        * React-boostrap
     
 
 
