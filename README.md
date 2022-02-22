@@ -48,6 +48,7 @@ Aplicacion web destinada a la adminnistración de alquileres de bicicletas elect
         * UseContext / UseState / UseEffect / UseCallback
         * Components
         * React-boostrap
+        * React-hook-forms
     
 
 
